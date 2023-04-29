@@ -1,0 +1,57 @@
+{
+    "recipes": [
+        {
+            "id": 1,
+            "title": "Garlic Butter Shrimp",
+            "description": "This easy garlic butter shrimp recipe is succulent shrimp tossed in an easy garlic and lemon sauce.",
+            "img": {
+                "src": "img/garlic-butter-shrimp.jpg",
+                "alt": "Garlic Butter Shrimp"
+            },
+            "image": "img/garlic-butter-shrimp.jpg",
+            "categoryId": 1,
+            "prep_time": 10,
+            "cook_time": 15,
+            "servings": 4,
+            "ingredients": [
+                "1 lb. large shrimp, peeled and deveined",
+                "2 tbsp. butter",
+                "4 cloves garlic, minced",
+                "1/4 cup chicken broth",
+                "1/4 cup white wine",
+                "2 tbsp. lemon juice",
+                "2 tbsp. chopped parsley",
+                "Salt and pepper, to taste"
+            ],
+            "instructions": [
+                "Heat the butter in a large skillet over medium-high heat.",
+                "Add the garlic and cook for 30 seconds.",
+                "Add the shrimp and cook for 2-3 minutes per side, or until pink and opaque.",
+                "Remove the shrimp from the skillet and set aside.",
+                "Add the chicken broth, white wine, and lemon juice to the skillet and bring to a boil.",
+                "Reduce heat to low and simmer for 3-4 minutes, or until the sauce has thickened slightly.",
+                "Season the sauce with salt and pepper, to taste.",
+                "Add the shrimp back to the skillet and toss to coat with the sauce.",
+                "Garnish with chopped parsley and serve immediately."
+            ],
+            "nutritional_info": {
+                "calories": 190,
+                "fat": 8,
+                "carbohydrates": 3,
+                "protein": 23,
+                "sodium": 620
+            },
+            "comments": [
+                {
+                    "username": "JohnDoe",
+                    "comment": "This recipe was amazing! I added some red pepper flakes for a bit of extra spice, and it turned out great."
+                },
+                {
+                    "username": "JaneSmith",
+                    "comment": "I made this for dinner last night and my whole family loved it. I'll definitely be making it again soon!"
+                }
+            ],
+            "dateAdded": "2022-11-11"
+        }
+    ]
+}
