@@ -1,12 +1,14 @@
 * {
     margin: 0px;
     padding: 0px;
+    font-family: 'Roboto', sans-serif;
 }
 #cover {
-    background-image: url(../img/cover.jpg);
+    background-image: url(../img/cover-blurred.jpg);
     background-repeat: no-repeat;
     height: 100vh;
     background-size: cover;
+    
 }
 #nav-title {
     font-family: 'Pacifico', cursive;
@@ -14,4 +16,7 @@
 #main-title {
     font-family: 'Pacifico', cursive;
     font-size: 350%;
+}
+.lead{
+    font-weight: 400;
 }
