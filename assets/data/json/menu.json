@@ -1,0 +1,22 @@
+[
+    {
+        "href": "index.html",
+        "name": "Home"
+    },
+    {
+        "href": "recipes.html",
+        "name": "Recipes"
+    },
+    {
+        "href": "submit-recipe.html",
+        "name": "Submit Recipe"
+    },
+    {
+        "href": "contact.html",
+        "name": "Contact us"
+    },
+    {
+        "href": "about-author.html",
+        "name": "About author"
+    }
+]
