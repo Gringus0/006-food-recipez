@@ -1,8 +1,42 @@
-{
-    "categories": [
-        {
-            "id": 1,
-            "name": "Seafood"
-        }
-    ]
-}
+[
+    {
+        "id": 1,
+        "name": "Seafood"
+    },
+    {
+        "id": 2,
+        "name": "Salad"
+    },
+    {
+        "id": 3,
+        "name": "Italian"
+    },
+    {
+        "id": 4,
+        "name": "Vegetarian"
+    },
+    {
+        "id": 5,
+        "name": "Main dish"
+    },
+    {
+        "id": 6,
+        "name": "Side dish"
+    },
+    {
+        "id": 7,
+        "name": "Soup"
+    },
+    {
+        "id": 8,
+        "name": "Sushi"
+    },
+    {
+        "id": 9,
+        "name": "Pasta"
+    },
+    {
+        "id": 10,
+        "name": "Appetizer"
+    }
+]

@@ -1,4 +1,5 @@
 const BASE_URL= "https://gringus0.github.io/savoryspot/";
+const BASE_IMG = "assets/img/";
 var url = document.location.pathname;
 console.log(url);
 window.onload = function(){
@@ -6,6 +7,40 @@ window.onload = function(){
         navigation(result);
     });
     
+
+    if (url == "/" || url == "/index.html") {
+        
+    }
+    else if(url == "/recipes.html"){
+        ajaxCB("recipes.json", function(result){
+            writeCardList(result);
+        })
+        
+    }
+}
+
+{/* <div class="card" style="width: 18rem;">
+    <img src="assets/img/garlic-butter-shrimp.jpg" class="card-img-top" alt="Garlic Butter"/>
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div> */}
+
+function writeCardList(array){
+    let html = ``;
+    for(let item of array){
+        html += `<div class="card col-4 mx-3" style="width: 18rem;">
+                    <img src="${BASE_IMG}${item.img.src}" class="card-img-top" alt="${item.img.alt}"/>
+                    <div class="card-body">
+                        <h5 class="card-title">${item.title}</h5>
+                        <p class="card-text">${item.description}</p>
+                        <a href="#" class="btn btn-primary">Check it out!</a>
+                    </div>
+                </div>`
+    }
+    document.querySelector("#recipe-list").innerHTML = html;
 }
 
 function navigation(array){

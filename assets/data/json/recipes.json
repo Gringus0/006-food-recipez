@@ -1,57 +1,812 @@
-{
-    "recipes": [
-        {
-            "id": 1,
-            "title": "Garlic Butter Shrimp",
-            "description": "This easy garlic butter shrimp recipe is succulent shrimp tossed in an easy garlic and lemon sauce.",
-            "img": {
-                "src": "img/garlic-butter-shrimp.jpg",
-                "alt": "Garlic Butter Shrimp"
+[
+    {
+        "id": 1,
+        "title": "Garlic Butter Shrimp",
+        "description": "This easy garlic butter shrimp recipe is succulent shrimp tossed in an easy garlic and lemon sauce.",
+        "img": {
+            "src": "garlic-butter-shrimp.jpg",
+            "alt": "Garlic Butter Shrimp"
+        },
+        "categoryId": [1],
+        "prep_time": 10,
+        "cook_time": 15,
+        "servings": 4,
+        "ingredients": [
+            "1 lb. large shrimp, peeled and deveined",
+            "2 tbsp. butter",
+            "4 cloves garlic, minced",
+            "1/4 cup chicken broth",
+            "1/4 cup white wine",
+            "2 tbsp. lemon juice",
+            "2 tbsp. chopped parsley",
+            "Salt and pepper, to taste"
+        ],
+        "instructions": [
+            "Heat the butter in a large skillet over medium-high heat.",
+            "Add the garlic and cook for 30 seconds.",
+            "Add the shrimp and cook for 2-3 minutes per side, or until pink and opaque.",
+            "Remove the shrimp from the skillet and set aside.",
+            "Add the chicken broth, white wine, and lemon juice to the skillet and bring to a boil.",
+            "Reduce heat to low and simmer for 3-4 minutes, or until the sauce has thickened slightly.",
+            "Season the sauce with salt and pepper, to taste.",
+            "Add the shrimp back to the skillet and toss to coat with the sauce.",
+            "Garnish with chopped parsley and serve immediately."
+        ],
+        "nutritional_info": {
+            "calories": 190,
+            "fat": 8,
+            "carbohydrates": 3,
+            "protein": 23,
+            "sodium": 620
+        },
+        "comments": [
+            {
+                "username": "JohnDoe",
+                "comment": "This recipe was amazing! I added some red pepper flakes for a bit of extra spice, and it turned out great."
             },
-            "image": "img/garlic-butter-shrimp.jpg",
-            "categoryId": 1,
-            "prep_time": 10,
-            "cook_time": 15,
-            "servings": 4,
-            "ingredients": [
-                "1 lb. large shrimp, peeled and deveined",
-                "2 tbsp. butter",
-                "4 cloves garlic, minced",
-                "1/4 cup chicken broth",
-                "1/4 cup white wine",
-                "2 tbsp. lemon juice",
-                "2 tbsp. chopped parsley",
-                "Salt and pepper, to taste"
-            ],
-            "instructions": [
-                "Heat the butter in a large skillet over medium-high heat.",
-                "Add the garlic and cook for 30 seconds.",
-                "Add the shrimp and cook for 2-3 minutes per side, or until pink and opaque.",
-                "Remove the shrimp from the skillet and set aside.",
-                "Add the chicken broth, white wine, and lemon juice to the skillet and bring to a boil.",
-                "Reduce heat to low and simmer for 3-4 minutes, or until the sauce has thickened slightly.",
-                "Season the sauce with salt and pepper, to taste.",
-                "Add the shrimp back to the skillet and toss to coat with the sauce.",
-                "Garnish with chopped parsley and serve immediately."
-            ],
-            "nutritional_info": {
-                "calories": 190,
-                "fat": 8,
-                "carbohydrates": 3,
-                "protein": 23,
-                "sodium": 620
+            {
+                "username": "JaneSmith",
+                "comment": "I made this for dinner last night and my whole family loved it. I'll definitely be making it again soon!"
+            }
+        ],
+        "dateAdded": "2022-11-11"
+    },
+    {        
+        "id": 2,        
+        "title": "Caprese Salad",        
+        "description": "This classic Caprese Salad is made with fresh tomatoes, creamy mozzarella cheese, and fragrant basil leaves.",        
+        "img": {            
+            "src": "caprese-salad.jpg",            
+            "alt": "Caprese Salad"        
+        },        
+        "categoryId": [2],        
+        "prep_time": 10,        
+        "cook_time": 0,        
+        "servings": 4,        
+        "ingredients": [            
+            "4 large ripe tomatoes, sliced",            
+            "8 oz. fresh mozzarella cheese, sliced",            
+            "1/4 cup fresh basil leaves",            
+            "2 tbsp. olive oil",            
+            "2 tbsp. balsamic vinegar",            
+            "Salt and pepper, to taste"        
+        ],
+        "instructions": [
+            "Arrange the tomato slices on a serving platter.",
+            "Top each slice with a slice of mozzarella cheese.",
+            "Sprinkle the fresh basil leaves over the cheese.",
+            "Drizzle the olive oil and balsamic vinegar over the salad.",
+            "Season with salt and pepper, to taste.",
+            "Serve immediately."
+        ],
+        "nutritional_info": {
+            "calories": 270,
+            "fat": 20,
+            "carbohydrates": 10,
+            "protein": 12,
+            "sodium": 350
+        },
+        "comments": [
+            {
+                "username": "SaraSmith",
+                "comment": "This salad is a summer staple in our household. So easy to make and always delicious!"
             },
-            "comments": [
-                {
-                    "username": "JohnDoe",
-                    "comment": "This recipe was amazing! I added some red pepper flakes for a bit of extra spice, and it turned out great."
-                },
-                {
-                    "username": "JaneSmith",
-                    "comment": "I made this for dinner last night and my whole family loved it. I'll definitely be making it again soon!"
-                }
-            ],
-            "dateAdded": "2022-11-11"
-        }
-    ]
-}
+            {
+                "username": "MikeJones",
+                "comment": "I've never been a big fan of tomatoes, but this salad converted me! The fresh mozzarella and basil are the perfect complement."
+            }
+        ],
+        "dateAdded": "2022-12-05"
+    },
+    {        
+        "id": 3,        
+        "title": "Creamy Mushroom Risotto",        
+        "description": "This creamy mushroom risotto is made with arborio rice, mushrooms, parmesan cheese, and white wine.",        
+        "img": {            
+            "src": "creamy-mushroom-risotto.jpg",            
+            "alt": "Creamy Mushroom Risotto"        
+        },        
+        "categoryId": [3, 4],        
+        "prep_time": 10,        
+        "cook_time": 30,        
+        "servings": 4,        
+        "ingredients": [            
+            "6 cups chicken or vegetable broth",            
+            "3 tbsp. olive oil",            
+            "1 onion, chopped",            
+            "4 cloves garlic, minced",            
+            "1 lb. mushrooms, sliced",            
+            "2 cups arborio rice",            
+            "1/2 cup white wine",            
+            "1/2 cup grated parmesan cheese",            
+            "2 tbsp. chopped parsley",            
+            "Salt and pepper, to taste"        
+        ],
+        "instructions": [
+            "Heat the broth in a saucepan and keep it warm over low heat.",
+            "In a large skillet, heat the olive oil over medium heat.",
+            "Add the onion and garlic and cook until soft.",
+            "Add the mushrooms and cook until they release their liquid and are browned.",
+            "Add the arborio rice and cook for 1-2 minutes, stirring constantly.",
+            "Add the white wine and stir until it is absorbed by the rice.",
+            "Add 1 cup of the warm broth to the skillet and stir until it is absorbed by the rice.",
+            "Repeat the previous step until all of the broth has been added and the rice is tender and creamy.",
+            "Remove from heat and stir in the parmesan cheese and parsley.",
+            "Season with salt and pepper, to taste.",
+            "Serve immediately."
+        ],
+        "nutritional_info": {
+            "calories": 380,
+            "fat": 13,
+            "carbohydrates": 53,
+            "protein": 11,
+            "sodium": 1200
+        },
+        "comments": [
+            {
+                "username": "Chef123",
+                "comment": "This is one of my favorite risotto recipes! So creamy and flavorful."
+            },
+            {
+                "username": "FoodieGirl",
+                "comment": "I made this for a dinner party and it was a huge hit. Everyone loved it!"
+            }
+        ],
+        "dateAdded": "2022-11-15"
+    },
+    {
+        "id": 4,
+        "title": "Greek Salad",
+        "description": "This Greek salad recipe is made with crisp lettuce, juicy tomatoes, cucumbers, bell peppers, feta cheese, and kalamata olives, all tossed in a tangy lemon vinaigrette.",
+        "img": {
+            "src": "greek-salad.jpg",
+            "alt": "Greek Salad"
+        },
+        "categoryId": [2],
+        "prep_time": 15,
+        "cook_time": 0,
+        "servings": 4,
+        "ingredients": [
+            "1 head romaine lettuce, chopped",
+            "1 large tomato, diced",
+            "1/2 English cucumber, sliced",
+            "1/2 red bell pepper, sliced",
+            "1/2 green bell pepper, sliced",
+            "1/2 cup crumbled feta cheese",
+            "1/4 cup kalamata olives",
+            "3 tbsp. extra-virgin olive oil",
+            "2 tbsp. lemon juice",
+            "1 tsp. dried oregano",
+            "Salt and pepper, to taste"
+        ],
+        "instructions": [
+            "In a large salad bowl, combine the lettuce, tomato, cucumber, bell peppers, feta cheese, and kalamata olives.",
+            "In a small bowl, whisk together the olive oil, lemon juice, oregano, salt, and pepper.",
+            "Pour the dressing over the salad and toss to coat.",
+            "Serve immediately."
+        ],
+        "nutritional_info": {
+            "calories": 180,
+            "fat": 14,
+            "carbohydrates": 10,
+            "protein": 6,
+            "sodium": 430
+        },
+        "comments": [
+            {
+                "username": "HealthyEating",
+                "comment": "This salad is so fresh and delicious! I love the tangy lemon vinaigrette."
+            },
+            {
+                "username": "FoodieFan",
+                "comment": "I make this Greek salad all the time and it's always a hit. Perfect for summer!"
+            }
+        ],
+        "dateAdded": "2023-04-28"
+    },
+    {
+        "id": 5,
+        "title": "Spicy Thai Basil Chicken",
+        "description": "This Spicy Thai Basil Chicken is a quick and easy stir-fry dish that is perfect for a weeknight dinner. The dish is packed with flavor and has just the right amount of heat.",
+        "img": {
+          "src": "spicy-thai-basil-chicken.jpg",
+          "alt": "Spicy Thai Basil Chicken"
+        },
+        "categoryId": [2],
+        "prep_time": 15,
+        "cook_time": 10,
+        "servings": 4,
+        "ingredients": [
+          "1 lb. boneless, skinless chicken breasts, cut into bite-sized pieces",
+          "2 tbsp. vegetable oil",
+          "4 garlic cloves, minced",
+          "1-2 Thai chilies, sliced",
+          "1 onion, sliced",
+          "1 red bell pepper, sliced",
+          "1 green bell pepper, sliced",
+          "1/2 cup fresh basil leaves",
+          "2 tbsp. fish sauce",
+          "1 tbsp. soy sauce",
+          "1 tsp. sugar"
+        ],
+        "instructions": [
+          "Heat the oil in a wok or large skillet over high heat.",
+          "Add the garlic and Thai chilies and stir-fry for 30 seconds.",
+          "Add the chicken and stir-fry until cooked through, about 3-4 minutes.",
+          "Add the onion, bell peppers, fish sauce, soy sauce, and sugar, and stir-fry for another 2-3 minutes, until the vegetables are slightly softened.",
+          "Add the basil leaves and stir-fry for another minute, until the basil is wilted.",
+          "Serve immediately with rice or noodles."
+        ],
+        "nutritional_info": {
+          "calories": 290,
+          "fat": 14,
+          "carbohydrates": 9,
+          "protein": 31,
+          "sodium": 960
+        },
+        "comments": [
+          {
+            "username": "SpiceLover",
+            "comment": "This recipe is amazing! I love the combination of spice and basil. Will definitely make it again."
+          },
+          {
+            "username": "ChickenFan",
+            "comment": "This dish was so easy to make and tasted great. Perfect for a quick weeknight dinner."
+          }
+        ],
+        "dateAdded": "2022-11-19"
+    },
+    {
+        "id": 6,
+        "title": "Classic Caesar Salad",
+        "description": "A traditional Caesar salad with crisp romaine lettuce, crunchy croutons, tangy Parmesan cheese, and a creamy homemade dressing.",
+        "img": {
+          "src": "caesar-salad.jpg",
+          "alt": "Classic Caesar Salad"
+        },
+        "categoryId": [2],
+        "prep_time": 20,
+        "cook_time": 0,
+        "servings": 4,
+        "ingredients": [
+          "1 head romaine lettuce, chopped",
+          "1 cup croutons",
+          "1/4 cup grated Parmesan cheese",
+          "1/4 cup olive oil",
+          "2 tablespoons fresh lemon juice",
+          "1 tablespoon Dijon mustard",
+          "1 tablespoon Worcestershire sauce",
+          "1 garlic clove, minced",
+          "1/4 teaspoon salt",
+          "1/4 teaspoon black pepper"
+        ],
+        "instructions": [
+          "In a small bowl, whisk together the olive oil, lemon juice, Dijon mustard, Worcestershire sauce, garlic, salt, and pepper until well combined.",
+          "In a large salad bowl, combine the chopped romaine lettuce and croutons.",
+          "Drizzle the dressing over the salad and toss to coat.",
+          "Sprinkle the grated Parmesan cheese over the top of the salad.",
+          "Serve immediately."
+        ],
+        "nutritional_info": {
+          "calories": 210,
+          "fat": 18,
+          "carbohydrates": 8,
+          "protein": 6,
+          "sodium": 400
+        },
+        "comments": [
+          {
+            "username": "SaladLover",
+            "comment": "This Caesar salad is so delicious! The homemade dressing is amazing."
+          },
+          {
+            "username": "Foodie123",
+            "comment": "I made this salad for lunch and it was the perfect meal. The croutons added the perfect crunch."
+          }
+        ],
+        "dateAdded": "2022-09-01"
+    },
+    {
+        "id": 7,
+        "title": "Classic Beef Stroganoff",
+        "description": "A classic Russian dish made with sautéed beef in a rich sour cream sauce served over egg noodles.",
+        "img": {
+            "src": "classic-beef-stroganoff.jpg",
+            "alt": "Classic Beef Stroganoff"
+        },
+        "categoryId": [5],
+        "prep_time": 20,
+        "cook_time": 40,
+        "servings": 6,
+        "ingredients": [
+            "1 1/2 lbs. beef sirloin, cut into thin strips",
+            "2 tbsp. olive oil",
+            "1 onion, chopped",
+            "3 cloves garlic, minced",
+            "8 oz. white mushrooms, sliced",
+            "1/4 cup all-purpose flour",
+            "1 cup beef broth",
+            "1/2 cup sour cream",
+            "1 tbsp. Dijon mustard",
+            "1 tsp. paprika",
+            "Salt and pepper, to taste",
+            "1 lb. egg noodles, cooked according to package instructions",
+            "2 tbsp. chopped fresh parsley, for garnish"
+        ],
+        "instructions": [
+            "In a large skillet, heat the olive oil over medium-high heat.",
+            "Add the beef strips and cook until browned on all sides.",
+            "Remove the beef from the skillet and set aside.",
+            "Add the onion and garlic to the skillet and cook until softened.",
+            "Add the sliced mushrooms and cook until they release their liquid and are browned.",
+            "Sprinkle the flour over the mushrooms and stir to combine.",
+            "Slowly add the beef broth, stirring constantly, until the mixture thickens.",
+            "Stir in the sour cream, Dijon mustard, and paprika.",
+            "Add the beef back to the skillet and stir to combine.",
+            "Season with salt and pepper, to taste.",
+            "Serve the beef stroganoff over the cooked egg noodles and garnish with chopped parsley."
+        ],
+        "nutritional_info": {
+            "calories": 450,
+            "fat": 20,
+            "carbohydrates": 34,
+            "protein": 34,
+            "sodium": 750
+        },
+        "comments": [
+            {
+                "username": "Beeflover",
+                "comment": "This was amazing! The beef was so tender and the sauce was perfect."
+            },
+            {
+                "username": "Noodlefan",
+                "comment": "I loved the egg noodles with this dish. It was a great combination!"
+            }
+        ],
+        "dateAdded": "2022-08-10"
+    },
+    {
+        "id": 8,
+        "title": "Vegan Lentil Soup",
+        "description": "This vegan lentil soup is hearty and satisfying, filled with lentils, vegetables, and flavorful spices.",
+        "img": {
+            "src": "vegan-lentil-soup.jpg",
+            "alt": "Vegan Lentil Soup"
+        },
+        "categoryId": [4, 5, 6, 7],
+        "prep_time": 15,
+        "cook_time": 45,
+        "servings": 6,
+        "ingredients": [
+            "1 tbsp. olive oil",
+            "1 onion, chopped",
+            "3 cloves garlic, minced",
+            "2 stalks celery, chopped",
+            "2 carrots, peeled and chopped",
+            "1 red bell pepper, chopped",
+            "1 green bell pepper, chopped",
+            "1 1/2 cups brown lentils",
+            "6 cups vegetable broth",
+            "1 can diced tomatoes (14.5 oz.)",
+            "1 tsp. ground cumin",
+            "1 tsp. ground coriander",
+            "1 tsp. smoked paprika",
+            "1/2 tsp. turmeric",
+            "Salt and pepper, to taste",
+            "2 tbsp. chopped fresh parsley, for garnish"
+        ],
+        "instructions": [
+            "Heat the olive oil in a large pot over medium heat.",
+            "Add the onion and garlic and cook until softened.",
+            "Add the celery, carrots, and bell peppers and cook for 5 minutes.",
+            "Add the lentils, vegetable broth, diced tomatoes, cumin, coriander, paprika, turmeric, salt, and pepper.",
+            "Bring to a boil, then reduce heat and simmer for 30-40 minutes, until the lentils are tender.",
+            "Garnish with chopped fresh parsley before serving."
+        ],
+        "nutritional_info": {
+            "calories": 260,
+            "fat": 3,
+            "carbohydrates": 46,
+            "protein": 16,
+            "sodium": 990
+        },
+        "comments": [
+            {
+                "username": "VeganFoodie",
+                "comment": "This is my go-to lentil soup recipe. So delicious and filling!"
+            },
+            {
+                "username": "HealthyEats",
+                "comment": "I love how healthy and flavorful this soup is. Perfect for a cold winter day."
+            }
+        ],
+        "dateAdded": "2022-12-10"
+    },
+    {
+        "id": 9,
+        "title": "Spicy Tuna Rolls",
+        "description": "Spicy tuna rolls are a popular type of sushi that feature a mixture of tuna, mayonnaise, and spices wrapped in sushi rice and seaweed.",
+        "img": {
+          "src": "spicy-tuna-rolls.jpg",
+          "alt": "Spicy Tuna Rolls"
+        },
+        "categoryId": [8],
+        "prep_time": 20,
+        "cook_time": 0,
+        "servings": 4,
+        "ingredients": [
+          "1/2 lb sushi-grade tuna, diced",
+          "1/4 cup mayonnaise",
+          "1 tbsp sriracha",
+          "1 tsp soy sauce",
+          "1 tsp sesame oil",
+          "4 sheets sushi nori",
+          "2 cups sushi rice, cooked",
+          "1 tbsp sesame seeds"
+        ],
+        "instructions": [
+          "In a small bowl, combine the tuna, mayonnaise, sriracha, soy sauce, and sesame oil.",
+          "Lay a sheet of nori on a sushi mat or piece of plastic wrap, shiny-side down.",
+          "Scoop about 1/2 cup of sushi rice onto the nori and use your fingers to spread it evenly over the nori, leaving a 1-inch border at the top edge.",
+          "Place about 1/4 of the tuna mixture in a line across the rice, about 1 inch from the bottom edge.",
+          "Roll up the sushi tightly, using the mat or plastic wrap to help guide the roll.",
+          "Repeat with the remaining ingredients to make 4 rolls.",
+          "Slice each roll into 8 pieces with a sharp knife.",
+          "Sprinkle the sesame seeds over the top of the rolls.",
+          "Serve immediately."
+        ],
+        "nutritional_info": {
+          "calories": 370,
+          "fat": 8,
+          "carbohydrates": 58,
+          "protein": 20,
+          "sodium": 660
+        },
+        "comments": [
+          {
+            "username": "SushiLover",
+            "comment": "These spicy tuna rolls are amazing! So fresh and flavorful."
+          },
+          {
+            "username": "Foodie123",
+            "comment": "I made these for a party and they were a huge hit! Everyone loved them."
+          }
+        ],
+        "dateAdded": "2023-04-30"
+    },
+    {
+        "id": 10,
+        "title": "Baked Ziti",
+        "description": "This classic baked ziti recipe is made with ziti pasta, tomato sauce, ground beef, and melted mozzarella cheese.",
+        "img": {
+            "src": "baked-ziti.jpg",
+            "alt": "Baked Ziti"
+        },
+        "categoryId": [9],
+        "prep_time": 15,
+        "cook_time": 45,
+        "servings": 6,
+        "ingredients": [
+            "1 lb. ziti pasta",
+            "1 lb. ground beef",
+            "1 onion, chopped",
+            "4 cloves garlic, minced",
+            "1 tsp. dried oregano",
+            "1 tsp. dried basil",
+            "1/4 tsp. red pepper flakes",
+            "2 cups tomato sauce",
+            "1 cup ricotta cheese",
+            "1 cup shredded mozzarella cheese",
+            "1/4 cup grated parmesan cheese",
+            "Salt and pepper, to taste"
+        ],
+        "instructions": [
+            "Preheat the oven to 375°F.",
+            "Cook the ziti according to package instructions, then drain and set aside.",
+            "In a large skillet, brown the ground beef over medium-high heat.",
+            "Add the onion, garlic, oregano, basil, and red pepper flakes and cook until the onion is soft.",
+            "Stir in the tomato sauce and bring to a simmer.",
+            "In a separate bowl, mix together the ricotta cheese, 1/2 cup of the mozzarella cheese, and 2 tbsp. of the parmesan cheese.",
+            "Add the cooked ziti to the tomato sauce and mix well.",
+            "Spread half of the ziti mixture in the bottom of a 9x13 inch baking dish.",
+            "Dollop half of the cheese mixture over the ziti.",
+            "Repeat with the remaining ziti mixture and cheese mixture.",
+            "Sprinkle the remaining mozzarella and parmesan cheeses over the top of the ziti.",
+            "Cover the dish with foil and bake for 25 minutes.",
+            "Remove the foil and bake for an additional 10-15 minutes, or until the cheese is melted and bubbly.",
+            "Let cool for a few minutes before serving."
+        ],
+        "nutritional_info": {
+            "calories": 560,
+            "fat": 25,
+            "carbohydrates": 44,
+            "protein": 38,
+            "sodium": 1020
+        },
+        "comments": [
+            {
+                "username": "PastaLover",
+                "comment": "This baked ziti is amazing! Perfect comfort food for a cozy night in."
+            },
+            {
+                "username": "ChefInTraining",
+                "comment": "I added some chopped bell pepper and it gave the dish a nice crunch. Will definitely make again!"
+            }
+        ],
+        "dateAdded": "2022-06-28"
+    },
+    {
+        "id": 11,
+        "title": "Roasted Brussels Sprouts",
+        "description": "Crispy and flavorful roasted Brussels sprouts that make a great side dish.",
+        "img": {
+          "src": "roasted-brussels-sprouts.jpg",
+          "alt": "Roasted Brussels Sprouts"
+        },
+        "categoryId": [4, 6],
+        "prep_time": 10,
+        "cook_time": 25,
+        "servings": 4,
+        "ingredients": [
+          "1 lb. Brussels sprouts, trimmed and halved",
+          "2 tbsp. olive oil",
+          "2 cloves garlic, minced",
+          "1/2 tsp. salt",
+          "1/4 tsp. black pepper",
+          "1/4 cup grated Parmesan cheese"
+        ],
+        "instructions": [
+          "Preheat the oven to 400°F.",
+          "In a large bowl, toss the Brussels sprouts with the olive oil and garlic.",
+          "Season with salt and pepper.",
+          "Spread the Brussels sprouts in a single layer on a baking sheet.",
+          "Roast for 20-25 minutes, until crispy and browned.",
+          "Sprinkle with Parmesan cheese and serve."
+        ],
+        "nutritional_info": {
+          "calories": 120,
+          "fat": 7,
+          "carbohydrates": 12,
+          "protein": 5,
+          "sodium": 300
+        },
+        "comments": [
+          {
+            "username": "VeggieLover",
+            "comment": "These Brussels sprouts were amazing! Even my kids loved them."
+          },
+          {
+            "username": "FoodieGirl123",
+            "comment": "I've made this recipe several times and it always turns out delicious. A great side dish for any meal."
+          }
+        ],
+        "dateAdded": "2022-05-03"
+    },
+    {
+        "id": 12,
+        "title": "Vegetarian Chili",
+        "description": "A hearty and flavorful vegetarian chili made with beans, vegetables, and spices.",
+        "img": {
+            "src": "vegetarian-chili.jpg",
+            "alt": "Vegetarian Chili"
+        },
+        "categoryId": [4, 5, 7],
+        "prep_time": 15,
+        "cook_time": 60,
+        "servings": 6,
+        "ingredients": [
+            "2 tbsp. olive oil",
+            "1 onion, chopped",
+            "3 cloves garlic, minced",
+            "1 red bell pepper, chopped",
+            "1 green bell pepper, chopped",
+            "2 carrots, chopped",
+            "2 stalks celery, chopped",
+            "1 jalapeño pepper, seeded and minced",
+            "2 tsp. chili powder",
+            "1 tsp. ground cumin",
+            "1 tsp. smoked paprika",
+            "1/2 tsp. dried oregano",
+            "1/4 tsp. cayenne pepper",
+            "1 can (28 oz.) diced tomatoes",
+            "1 can (15 oz.) black beans, drained and rinsed",
+            "1 can (15 oz.) kidney beans, drained and rinsed",
+            "1 can (15 oz.) corn, drained",
+            "2 cups vegetable broth",
+            "Salt and pepper, to taste",
+            "Sour cream and shredded cheddar cheese, for serving"
+        ],
+        "instructions": [
+            "In a large pot or Dutch oven, heat the olive oil over medium heat.",
+            "Add the onion and garlic and cook until soft.",
+            "Add the red and green bell peppers, carrots, celery, and jalapeño pepper and cook until the vegetables are tender.",
+            "Add the chili powder, cumin, smoked paprika, oregano, and cayenne pepper and stir to combine.",
+            "Add the diced tomatoes, black beans, kidney beans, corn, and vegetable broth.",
+            "Bring the chili to a simmer and cook for 45-60 minutes, stirring occasionally, until the vegetables are tender and the flavors have melded together.",
+            "Season with salt and pepper, to taste.",
+            "Serve with sour cream and shredded cheddar cheese, if desired."
+        ],
+        "nutritional_info": {
+            "calories": 290,
+            "fat": 8,
+            "carbohydrates": 47,
+            "protein": 12,
+            "sodium": 980
+        },
+        "comments": [
+            {
+                "username": "VeggieLover",
+                "comment": "This is my go-to chili recipe! So flavorful and filling without any meat."
+            },
+            {
+                "username": "SpiceQueen",
+                "comment": "Love the combination of spices in this chili. It has the perfect amount of heat!"
+            }
+        ],
+        "dateAdded": "2022-06-23"
+    },
+    {
+        "id": 13,
+        "title": "Grilled Steak with Chimichurri Sauce",
+        "description": "This grilled steak with chimichurri sauce is a classic Argentinean dish that is perfect for a summer barbecue. The steak is seasoned with garlic, cumin, and smoked paprika, then grilled to perfection and topped with a fresh and flavorful chimichurri sauce.",
+        "img": {
+            "src": "grilled-steak-chimichurri.jpg",
+            "alt": "Grilled Steak with Chimichurri Sauce"
+        },
+        "categoryId": [5],
+        "prep_time": 15,
+        "cook_time": 10,
+        "servings": 4,
+        "ingredients": [
+            "4 boneless ribeye steaks",
+            "2 tbsp olive oil",
+            "3 cloves garlic, minced",
+            "1 tsp ground cumin",
+            "1 tsp smoked paprika",
+            "Salt and black pepper, to taste",
+            "1/2 cup chopped fresh parsley",
+            "1/2 cup chopped fresh cilantro",
+            "1/4 cup chopped fresh oregano",
+            "3 tbsp red wine vinegar",
+            "1/4 cup olive oil",
+            "1/4 tsp red pepper flakes"
+        ],
+        "instructions": [
+            "Preheat the grill to medium-high heat.",
+            "In a small bowl, mix together the olive oil, garlic, cumin, smoked paprika, salt, and black pepper to make a marinade.",
+            "Brush the marinade over the steaks and let them sit at room temperature for 10 minutes.",
+            "Grill the steaks for 4-5 minutes per side for medium-rare, or until they reach your desired level of doneness.",
+            "While the steaks are grilling, make the chimichurri sauce. In a medium bowl, mix together the parsley, cilantro, oregano, red wine vinegar, olive oil, red pepper flakes, salt, and black pepper.",
+            "Remove the steaks from the grill and let them rest for 5 minutes.",
+            "Slice the steaks against the grain and serve them with the chimichurri sauce."
+        ],
+        "nutritional_info": {
+            "calories": 480,
+            "fat": 36,
+            "carbohydrates": 2,
+            "protein": 38,
+            "sodium": 360
+        },
+        "comments": [
+            {
+                "username": "GrillMaster",
+                "comment": "This recipe is a must-try for any barbecue lover. The flavors are incredible!"
+            },
+            {
+                "username": "FoodieForLife",
+                "comment": "I made this for dinner last night and my family loved it. The chimichurri sauce really takes it to the next level."
+            }
+        ],
+        "dateAdded": "2022-05-27"
+    },
+    {
+        "id": 14,
+        "title": "Vegetarian Stuffed Peppers",
+        "description": "These vegetarian stuffed peppers are filled with quinoa, black beans, corn, and spices for a hearty and healthy meal.",
+        "img": {
+          "src": "vegetarian-stuffed-peppers.jpg",
+          "alt": "Vegetarian Stuffed Peppers"
+        },
+        "categoryId": [4, 5, 6],
+        "prep_time": 15,
+        "cook_time": 60,
+        "servings": 4,
+        "ingredients": [
+          "4 large bell peppers",
+          "1 cup quinoa, rinsed",
+          "1 can black beans, drained and rinsed",
+          "1 can corn, drained",
+          "1/2 onion, chopped",
+          "2 cloves garlic, minced",
+          "1 tbsp. olive oil",
+          "1 tbsp. chili powder",
+          "1 tsp. cumin",
+          "1/2 tsp. paprika",
+          "Salt and pepper, to taste",
+          "1 cup shredded cheddar cheese"
+        ],
+        "instructions": [
+          "Preheat the oven to 375°F.",
+          "Cut the tops off the bell peppers and remove the seeds and membranes.",
+          "In a large saucepan, cook the quinoa according to package instructions.",
+          "In a large skillet, heat the olive oil over medium heat.",
+          "Add the onion and garlic and cook until soft.",
+          "Add the black beans, corn, chili powder, cumin, paprika, salt, and pepper.",
+          "Cook for 5-7 minutes, stirring occasionally.",
+          "Add the cooked quinoa to the skillet and stir until well combined.",
+          "Spoon the quinoa mixture into the bell peppers, filling them to the top.",
+          "Place the stuffed peppers in a baking dish and cover with foil.",
+          "Bake for 45 minutes.",
+          "Remove the foil and sprinkle the shredded cheddar cheese over the tops of the peppers.",
+          "Bake for an additional 5-10 minutes, or until the cheese is melted and bubbly.",
+          "Serve immediately."
+        ],
+        "nutritional_info": {
+          "calories": 380,
+          "fat": 12,
+          "carbohydrates": 54,
+          "protein": 15,
+          "sodium": 800
+        },
+        "comments": [
+          {
+            "username": "HealthyEater",
+            "comment": "These stuffed peppers are a staple in my meal prep. So good and healthy!"
+          },
+          {
+            "username": "VeggieLover",
+            "comment": "I made these for my vegetarian friends and they loved them. Definitely adding this to my regular rotation."
+          }
+        ],
+        "dateAdded": "2022-09-08"
+    },
+    {
+        "id": 15,
+        "title": "Lemon Garlic Shrimp",
+        "description": "This Lemon Garlic Shrimp recipe is a quick and easy dish that is perfect for busy weeknights. The shrimp are seasoned with garlic, lemon, and red pepper flakes, and cooked in a buttery sauce.",
+        "img": {
+            "src": "lemon-garlic-shrimp.jpg",
+            "alt": "Lemon Garlic Shrimp"
+        },
+        "categoryId": [1, 10],
+        "prep_time": 10,
+        "cook_time": 10,
+        "servings": 4,
+        "ingredients": [
+            "1 lb. large shrimp, peeled and deveined",
+            "4 cloves garlic, minced",
+            "1/4 cup butter",
+            "2 tbsp. olive oil",
+            "1 lemon, juiced and zested",
+            "1/2 tsp. red pepper flakes",
+            "Salt and pepper, to taste",
+            "Chopped parsley, for garnish"
+        ],
+        "instructions": [
+            "In a large skillet, heat the olive oil and butter over medium-high heat.",
+            "Add the garlic and red pepper flakes and cook for 1-2 minutes, until fragrant.",
+            "Add the shrimp to the skillet and cook for 2-3 minutes on each side, until pink and cooked through.",
+            "Add the lemon juice and zest to the skillet and stir to combine.",
+            "Season with salt and pepper, to taste.",
+            "Garnish with chopped parsley and serve immediately."
+        ],
+        "nutritional_info": {
+            "calories": 230,
+            "fat": 14,
+            "carbohydrates": 5,
+            "protein": 22,
+            "sodium": 480
+        },
+        "comments": [
+            {
+                "username": "SeafoodLover",
+                "comment": "This lemon garlic shrimp is amazing! So much flavor and so easy to make."
+            },
+            {
+                "username": "HealthyEats",
+                "comment": "I love this shrimp recipe! It's low-carb and high-protein, and tastes delicious."
+            }
+        ],
+        "dateAdded": "2022-08-10"
+    }
+]
