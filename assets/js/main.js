@@ -9,10 +9,10 @@ window.onload = function(){
     });
     footer();
 
-    if (url == "/" || url == "/index.html") {
+    if (url == "/savoryspot/" || url == "/savoryspot/index.html") {
         
     }
-    else if(url == "/recipes.html"){
+    else if(url == "/savoryspot/recipes.html"){
         ajaxCB("recipes.json", function(result){
             let select = document.querySelector("#sort-select");
             let selectedIndex = select.selectedIndex;
