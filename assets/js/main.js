@@ -1,7 +1,7 @@
 const BASE_URL= "https://gringus0.github.io/savoryspot/";
 const BASE_IMG = "assets/img/";
 var url = document.location.pathname;
-// console.log(url);
+console.log(url);
 let categories =  getFromLS("");
 window.onload = function(){
     ajaxCB("menu.json", function(result){
