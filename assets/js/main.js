@@ -6,7 +6,7 @@ window.onload = function(){
     ajaxCB("menu.json", function(result){
         navigation(result);
     });
-    
+    footer();
 
     if (url == "/" || url == "/index.html") {
         
@@ -15,26 +15,48 @@ window.onload = function(){
         ajaxCB("recipes.json", function(result){
             writeCardList(result);
         })
-        
+        createRadio("Date added: ", "sortDateAdded", ["sort-date-added-asc", "sort-date-added-desc"], ["Ascending", "Descending"]);
+        createRadio("Prep + Cook time: ", "sortTime", ["sort-time-asc", "sort-time-desc"], ["Ascending", "Descending"])
+        ajaxCB("categories.json", function(result){
+            result.forEach(category => {
+                createCheckbox(category.name);
+            });
+        })
     }
 }
 
-{/* <div class="card" style="width: 18rem;">
-    <img src="assets/img/garlic-butter-shrimp.jpg" class="card-img-top" alt="Garlic Butter"/>
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-</div> */}
+
+function createCheckbox(name){
+    let html = `<div class="form-check">
+                <input class="form-check-input" type="checkbox" value="${name.toLowerCase()}" id="${name}" name="${name.toLowerCase()}">
+                <label class="form-check-label" for="${name}">${name}</label>
+            </div>`        
+    document.querySelector("#filter").innerHTML += html;
+}
+
+function createRadio(nameOfList, name, idArray, labelArray){
+    let html = ``;
+    html += `<label>${nameOfList}</label>`
+            for(let i = 0; i < idArray.length; i++){
+                html += `<div class="form-check">
+                                <input class="form-check-input" type="radio" name="${name}" id="${idArray[i]}" value="${idArray[i]}">
+                                <label class="form-check-label" for="${idArray[i]}">${labelArray[i]}</label>
+                            </div>`         
+            }
+    document.querySelector("#sort").innerHTML += html;
+            
+}
 
 function writeCardList(array){
     let html = ``;
     for(let item of array){
         html += `<div class="card col-4 mx-3" style="width: 18rem;">
                     <img src="${BASE_IMG}${item.img.src}" class="card-img-top" alt="${item.img.alt}"/>
-                    <div class="card-body">
-                        <h5 class="card-title">${item.title}</h5>
+                    <div class="card-body">`
+                    
+                    html += `<h5 class="card-title">${item.title}</h5>
+                        <p class="card-text">Prep time: ${item.prep_time} minutes</p>
+                        <p class="card-text">Cook time: ${item.cook_time} minutes</p>
                         <p class="card-text">${item.description}</p>
                         <a href="#" class="btn btn-primary">Check it out!</a>
                     </div>
@@ -45,7 +67,7 @@ function writeCardList(array){
 
 function navigation(array){
     let header = document.querySelector("header");
-    let html = `<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    let html = `<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="#" id="nav-title">SavorySpot</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,6 +89,13 @@ function navigation(array){
                     </div>
                 </nav>`
     header.innerHTML = html;
+}
+
+function footer(){
+    let html = `<p class="m-0">Made by:&nbsp</p>
+                <a href="#" class="text-dark">Aleksandar Jovanović 104/21</a>
+                <p class="m-0">&copy Visoka ICT Škola</p>`
+    document.querySelector("footer").innerHTML = html;
 }
 
 function ajaxCB(file, result){
