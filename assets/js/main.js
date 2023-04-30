@@ -14,10 +14,17 @@ window.onload = function(){
     }
     else if(url == "/recipes.html"){
         ajaxCB("recipes.json", function(result){
-            writeCardList(result);
+            let select = document.querySelector("#sort-select");
+            let selectedIndex = select.selectedIndex;
+            let selectedValue = select.options[selectedIndex].value;
+            if(selectedValue == 0){
+                writeCardList(result);
+            }
+            sortRecipes(result);
         })
-        createRadio("Date added: ", "sortDateAdded", ["sort-date-added-asc", "sort-date-added-desc"], ["Ascending", "Descending"]);
-        createRadio("Prep + Cook time: ", "sortTime", ["sort-time-asc", "sort-time-desc"], ["Ascending", "Descending"])
+        
+        createRadio("sortDateAdded", ["sort-date-added-asc", "sort-date-added-desc"], ["Ascending", "Descending"]);
+        createRadio("sortCookTime", ["sort-time-asc", "sort-time-desc"], ["Ascending", "Descending"])
         ajaxCB("categories.json", function(result){
             result.forEach(category => {
                 createCheckbox(category.name, category.id);
@@ -48,16 +55,95 @@ function createCheckbox(name, id){
     document.querySelector("#filter").innerHTML += html;
 }
 
-function createRadio(nameOfList, name, idArray, labelArray){
+function createRadio(name, idArray, labelArray){
     let html = ``;
-    html += `<label>${nameOfList}</label>`
-            for(let i = 0; i < idArray.length; i++){
-                html += `<div class="form-check">
-                                <input class="form-check-input" type="radio" name="${name}" id="${idArray[i]}" value="${idArray[i]}">
-                                <label class="form-check-label" for="${idArray[i]}">${labelArray[i]}</label>
-                            </div>`         
-            }
+    html += `<div id="${name}" class="hide">`
+    for(let i = 0; i < idArray.length; i++){
+        html += `<div class="form-check">
+                        <input class="form-check-input" type="radio" name="${name}" id="${idArray[i]}" value="${idArray[i]}">
+                        <label class="form-check-label" for="${idArray[i]}">${labelArray[i]}</label>
+                    </div>`         
+    }
+    html += `</div>`
     document.querySelector("#sort").innerHTML += html;
+}
+
+function createDDL(){
+    let html = ``;
+    html += `<select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="dateSort">Date</option>
+                <option value="cookPrepSort">Cook + Prep time</option>
+            </select>`
+    document.querySelector("#sort").innerHTML += html;
+}
+
+function sortRecipes(array) {
+    const select = document.querySelector('#sort-select');
+    const sortDateAdded = document.querySelector('#sortDateAdded');
+    const sortCookTime = document.querySelector('#sortCookTime');
+
+    
+    select.addEventListener('change', () => {
+        
+        const value = select.value;
+    
+        
+        sortDateAdded.classList.add('hide');
+        sortCookTime.classList.add('hide');
+
+        
+        if (value === 'dateSort') {
+            sortDateAdded.classList.remove('hide');
+        } else if (value === 'cookPrepSort') {
+            sortCookTime.classList.remove('hide');
+        }
+    });
+
+    
+    const sortDateAddedRadios = document.querySelectorAll('[name="sortDateAdded"]');
+    const sortCookTimeRadios = document.querySelectorAll('[name="sortCookTime"]');
+
+
+    sortDateAddedRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            
+            const value = radio.value;
+        
+            
+            if (value === 'sort-date-added-asc') {
+                array.sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded));
+                writeCardList(array);
+            } else if (value === 'sort-date-added-desc') {
+                array.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                writeCardList(array);
+            }
+        
+            
+            console.log(array);
+        });
+    });
+    
+    sortCookTimeRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            
+            const value = radio.value;
+        
+            
+            if (value === 'sort-time-asc') {
+                array.sort((a, b) => a.cook_time + a.prep_time - b.cook_time - b.prep_time);
+                writeCardList(array);
+            } else if (value === 'sort-time-desc') {
+                array.sort((a, b) => b.cook_time + b.prep_time - a.cook_time - a.prep_time);
+                writeCardList(array);
+            }
+        
+            
+            console.log(array);
+        });
+    });
+    
+    return array;
 }
 
 function categoryFilter(array) {
@@ -73,14 +159,13 @@ function categoryFilter(array) {
         });
       });
     }
-    // console.log(array);
+
     return array;
 }
 
 function writeCardList(array){
     let html = ``;
     array = categoryFilter(array);
-    // console.log(array);
     for(let item of array){
         let categoriesJSON = getFromLS("categoriesJSON");
         let categories = [];
