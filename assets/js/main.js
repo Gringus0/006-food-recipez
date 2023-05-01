@@ -39,6 +39,114 @@ window.onload = function(){
     }
 }
 
+
+// <!-- Button trigger modal -->
+//   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+//     Launch demo modal
+//   </button>
+  
+//   <!-- Modal -->
+//   <div class="modal fade" id="card-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//     <div class="modal-dialog">
+//       <div class="modal-content">
+//         <div class="modal-header">
+//           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+//           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+//         </div>
+//         <div class="modal-body">
+//           ...
+//         </div>
+//         <div class="modal-footer">
+//           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+//           <button type="button" class="btn btn-primary">Save changes</button>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+
+function writeCardList(array){
+    let html = ``;
+    array = categoryFilter(array);
+    for(let item of array){
+        let categoriesJSON = getFromLS("categoriesJSON");
+        let categories = [];
+        html += `<div class="card col-4 mx-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="${BASE_IMG}${item.img.src}" class="card-img-top card-image" alt="${item.img.alt}"/>
+                        <div class="center"><a href="#" class="btn btn-primary modal-button" data-bs-toggle="modal" data-bs-target="#modal${item.id}">Check it out!</a></div>
+                    </div>
+                    
+                    <div class="card-body">`
+                    categoriesJSON.forEach(category => {
+                        item.categoryId.forEach(itemCategoryId => {
+                            if(category.id == itemCategoryId){
+                                categories.push(category.name);
+                            }
+                        });
+                    })
+                    let categoryText = categories.join(", ");
+                    html += `<h5 class="card-title">${item.title}</h5>
+                        <p class="card-text">${categoryText}</p>
+                        <p class="card-text">Prep time: ${item.prep_time} minutes</p>
+                        <p class="card-text">Cook time: ${item.cook_time} minutes</p>
+                        <p class="card-text">${item.description}</p>
+                    </div>
+                </div>`
+        let modal = `
+        <div class="modal fade p-0" id="modal${item.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">${item.title}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body row">
+                        <div class="col-3">
+                            <img src="${BASE_IMG}${item.img.src}" class="col-12" alt="${item.img.alt}"/>
+                            <small>Date added: ${item.dateAdded}</small>
+                            <p class="mt-2">Prep time: ${item.prep_time} minutes</p>
+                            <p class="">Cook time: ${item.cook_time} minutes</p>
+                            <p class="">Number of servings: ${item.servings}</p>
+                        </div>
+                        <div class="col-3">
+                            <h6>Ingredients:</h6>`
+                            item.ingredients.forEach((ingredient, index) => {
+                                modal += `
+                                <p class="mb-1">${index+1}) ${ingredient}</p>
+                                `
+                            })
+                        modal +=`
+                        </div>
+                        <div class="col-3">
+                            <h6>Instructions:</h6>`
+                            item.instructions.forEach((instruction, index) => {
+                                modal += `
+                                <p class="mb-1">${index+1}) ${instruction}</p>
+                                `
+                            })
+                        modal += `</div>
+                        <div class="col-3">
+                            <h6>Nutritional information:</h6>
+                            <p class="mb-1">Calories: ${item.nutritional_info.calories}kcal</p>
+                            <p class="mb-1">Fat: ${item.nutritional_info.fat}g</p>
+                            <p class="mb-1">Carbohydrates: ${item.nutritional_info.carbohydrates}g</p>
+                            <p class="mb-1">Protein: ${item.nutritional_info.protein}g</p>
+                            <p class="mb-1">Sodium: ${item.nutritional_info.sodium}mg</p>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+        html += modal;
+    }
+    document.querySelector("#recipe-list").innerHTML = html;
+}
+
 function addToLS(name, data){
     localStorage.setItem(name, JSON.stringify(data));
 }
@@ -163,34 +271,7 @@ function categoryFilter(array) {
     return array;
 }
 
-function writeCardList(array){
-    let html = ``;
-    array = categoryFilter(array);
-    for(let item of array){
-        let categoriesJSON = getFromLS("categoriesJSON");
-        let categories = [];
-        html += `<div class="card col-4 mx-3" style="width: 18rem;">
-                    <img src="${BASE_IMG}${item.img.src}" class="card-img-top" alt="${item.img.alt}"/>
-                    <div class="card-body">`
-                    categoriesJSON.forEach(category => {
-                        item.categoryId.forEach(itemCategoryId => {
-                            if(category.id == itemCategoryId){
-                                categories.push(category.name);
-                            }
-                        });
-                    })
-                    let categoryText = categories.join(", ");
-                    html += `<h5 class="card-title">${item.title}</h5>
-                        <p class="card-text">${categoryText}</p>
-                        <p class="card-text">Prep time: ${item.prep_time} minutes</p>
-                        <p class="card-text">Cook time: ${item.cook_time} minutes</p>
-                        <p class="card-text">${item.description}</p>
-                        <a href="#" class="btn btn-primary">Check it out!</a>
-                    </div>
-                </div>`
-    }
-    document.querySelector("#recipe-list").innerHTML = html;
-}
+
 
 function navigation(array){
     let header = document.querySelector("header");
@@ -265,3 +346,37 @@ function ajaxCB(file, result){
         }
     })
 }
+
+
+
+
+
+
+// document.addEventListener("click", function(event) {
+//     if (event.target.classList.contains("modal-button")) {
+//         // code to display modal goes here
+//         let card = event.target.closest(".card");
+//         let title = card.querySelector(".card-title").textContent;
+//         let description = card.querySelector(".card-text").textContent;
+//         // etc. for other data attributes you need
+//         let modalHTML = `
+//                         <div class="modal">
+//                             <div class="modal-dialog">
+//                                 <div class="modal-content">
+//                                     <div class="modal-header">
+//                                         <h5 class="modal-title">${title}</h5>
+//                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
+//                                     </div>
+//                                     <div class="modal-body">
+//                                         <p>${description}</p>
+//                                         <!-- add other data attributes here as needed -->
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     `;
+
+//         document.body.insertAdjacentHTML("beforeend", modalHTML);
+
+//     }
+// });
