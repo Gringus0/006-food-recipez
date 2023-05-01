@@ -2,7 +2,7 @@ const BASE_URL= "https://gringus0.github.io/savoryspot/";
 const BASE_IMG = "assets/img/";
 var url = document.location.pathname;
 console.log(url);
-let categories =  getFromLS("");
+// let categories =  getFromLS("");
 window.onload = function(){
     ajaxCB("menu.json", function(result){
         navigation(result);
@@ -37,32 +37,20 @@ window.onload = function(){
         })
         
     }
+    else if(url == "/savoryspot/submit-recipe.html"){
+        let  categories = getFromLS("categoriesJSON");
+        createDDL("#inputCategory", "category",  categories);
+        document.querySelector("#addCategory").addEventListener("click", function(e){
+            e.preventDefault();
+            createDDL("#inputCategory", "category",  categories);
+        })
+        
+        addInput("#addIngredient", "#inputIngredients", "Apples");
+        addInput("#addInstruction", "#inputInstructions", "Chop the apples");
+        
+        
+    }
 }
-
-
-// <!-- Button trigger modal -->
-//   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-//     Launch demo modal
-//   </button>
-  
-//   <!-- Modal -->
-//   <div class="modal fade" id="card-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-//     <div class="modal-dialog">
-//       <div class="modal-content">
-//         <div class="modal-header">
-//           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-//           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-//         </div>
-//         <div class="modal-body">
-//           ...
-//         </div>
-//         <div class="modal-footer">
-//           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-//           <button type="button" class="btn btn-primary">Save changes</button>
-//         </div>
-//       </div>
-//     </div>
-//   </div>
 
 function writeCardList(array){
     let html = ``;
@@ -112,7 +100,7 @@ function writeCardList(array){
                             <h6>Ingredients:</h6>`
                             item.ingredients.forEach((ingredient, index) => {
                                 modal += `
-                                <p class="mb-1">${index+1}) ${ingredient}</p>
+                                <p class="mb-0">${index+1}) ${ingredient}</p>
                                 `
                             })
                         modal +=`
@@ -121,7 +109,7 @@ function writeCardList(array){
                             <h6>Instructions:</h6>`
                             item.instructions.forEach((instruction, index) => {
                                 modal += `
-                                <p class="mb-1">${index+1}) ${instruction}</p>
+                                <p class="mb-0">${index+1}) ${instruction}</p>
                                 `
                             })
                         modal += `</div>
@@ -155,6 +143,13 @@ function getFromLS(name){
     return JSON.parse(localStorage.getItem(name));
 }
 
+function addInput(divInputId, divButtonId, placeholder){
+    document.querySelector(`${divInputId}`).addEventListener("click", function(e){
+        e.preventDefault();
+        document.querySelector(`${divButtonId}`).innerHTML += `<input type="text" class="form-control mb-1" placeholder="${placeholder}">`
+    })
+}
+
 function createCheckbox(name, id){
     let html = `<div class="form-check">
                 <input class="form-check-input category" type="checkbox" value="${id}" id="${name}" name="${name.toLowerCase()}">
@@ -176,14 +171,17 @@ function createRadio(name, idArray, labelArray){
     document.querySelector("#sort").innerHTML += html;
 }
 
-function createDDL(){
+function createDDL(divId, listName, array){
     let html = ``;
-    html += `<select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="dateSort">Date</option>
-                <option value="cookPrepSort">Cook + Prep time</option>
+    html += `<select class="form-select">
+                <option value="0">Choose a ${listName}</option>`
+                for(let item of array){
+                    html += `<option value="${item.name.toLowerCase()}">${item.name}</option>`
+                }
+
+                html += `
             </select>`
-    document.querySelector("#sort").innerHTML += html;
+    document.querySelector(`${divId}`).innerHTML += html;
 }
 
 function sortRecipes(array) {
@@ -271,13 +269,11 @@ function categoryFilter(array) {
     return array;
 }
 
-
-
 function navigation(array){
     let header = document.querySelector("header");
     let html = `<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#" id="nav-title">SavorySpot</a>
+                        <a class="navbar-brand" href="index.html" id="nav-title">SavorySpot</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
