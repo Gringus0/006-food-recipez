@@ -2,7 +2,6 @@ const BASE_URL= "https://gringus0.github.io/savoryspot/";
 const BASE_IMG = "assets/img/";
 var url = document.location.pathname;
 // console.log(url);
-// let categories =  getFromLS("");
 window.onload = function(){
     ajaxCB("menu.json", function(result){
         navigation(result);
@@ -40,16 +39,10 @@ window.onload = function(){
                 select.addEventListener("change", filterChange);
                 
                 sortRecipes(result);
-                // console.log(result);
-                // document.querySelector("#search-bar").addEventListener("keyup", function(result){
-                //     ajaxSearch(result);
-                // })
+                
             })
         })
 
-        // document.querySelector("#search-bar").addEventListener("keyup", function(array){
-        //     ajaxSearch(array);
-        // })
         document.querySelector("#search-bar").addEventListener("keyup", search);
 
     }
@@ -411,10 +404,19 @@ function navigation(array){
 }
 
 function footer(){
-    let html = `<p class="m-0">Made by:&nbsp</p>
-                <a href="#" class="text-dark">Aleksandar Jovanović 104/21</a>
+    let html = `
+            <div class="d-flex justify-content-center col-8">
+                <p class="m-0">Made by:&nbsp</p>
+                <a href="https://gringus0.github.io/002-portfolio-website/" class="text-dark">Aleksandar Jovanović 104/21</a>
                 <p class="m-0">&copy Visoka ICT Škola</p>
-                <i class="fa-solid fa-sitemap" style="color: #000000;"></i>`
+            </div>
+            <div class="col-4 d-flex justify-content-evenly align-items-center">
+                <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter" style="color: #000000;"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram" style="color: #000000;"></i></a>
+                <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook" style="color: #000000;"></i></a>
+                <a href="documentation.pdf" target="_blank"><i class="fa-solid fa-file" style="color: #000000;"></i></a>
+                <a href="sitemap.xml" target="_blank"><i class="fa-solid fa-sitemap" style="color: #000000;"></i></a>
+            <div>`
     document.querySelector("footer").innerHTML = html;
 }
 
