@@ -39,11 +39,71 @@ window.onload = function(){
                 select.addEventListener("change", filterChange);
                 
                 sortRecipes(result);
+
+                let favourites = [];
+                if(localStorage.getItem("favourites")){
+                    favourites = getFromLS("favourites");
+                }
+                
+                
+
+                let heartIcons = document.querySelectorAll('.heart-icon');
+
+                favourites.forEach(favourite => {
+                    // console.log(favourite);
+                    heartIcons.forEach(heartIcon =>{
+                        if(heartIcon.parentElement.nextElementSibling.textContent == favourite.title){
+                            heartIcon.classList.replace("fa-regular", "fa-solid");
+                        }
+                    })
+                })
+
+                
+                
+                heartIcons.forEach(heartIcon => {
+                    heartIcon.addEventListener("click", function(){
+                        if(heartIcon.classList.contains("fa-regular")){
+                            heartIcon.classList.replace("fa-regular", "fa-solid");
+                            result.forEach(element => {
+                                if(heartIcon.parentElement.nextElementSibling.textContent == element.title){
+                                    if(!favourites.includes(element)){
+                                        favourites.push(element);
+                                        addToLS("favourites", favourites);
+                                    }
+                                    // console.log(favourites);
+                                    
+                                }
+                            })
+                        }
+                        else{
+                            heartIcon.classList.replace("fa-solid", "fa-regular");
+                            result.forEach(element => {
+                                if(heartIcon.parentElement.nextElementSibling.textContent == element.title){
+                                    if(favourites.includes(element)){
+                                        favourites = favourites.filter(favourite => favourite != element);
+                                        
+                                        addToLS("favourites", favourites);
+                                        
+                                    }
+                                    // console.log(favourites);
+                                    
+                                }
+                            })
+                        }
+                        
+                    })
+                    
+                });
                 
             })
+            
         })
-
+    
         document.querySelector("#search-bar").addEventListener("keyup", search);
+
+        
+        
+
 
     }
     else if(url == "/savoryspot/submit-recipe.html"){
@@ -163,6 +223,8 @@ function writeCardList(array){
         let categories = [];
         html += `<div class="card col-4 mx-3" style="width: 18rem;">
                     <div class="image-container">
+                        
+                        
                         <img src="${BASE_IMG}${item.img.src}" class="card-img-top card-image p-3" alt="${item.img.alt}"/>
                         <div class="center"><a href="#" class="btn btn-primary modal-button" data-bs-toggle="modal" data-bs-target="#modal${item.id}">Check it out!</a></div>
                     </div>
@@ -176,7 +238,13 @@ function writeCardList(array){
                         });
                     })
                     let categoryText = categories.join(", ");
-                    html += `<h5 class="card-title">${item.title}</h5>
+                    html += `
+                        <div class="heart-icon-container mb-2 text-center">
+                            <i class="fa-regular fa-heart fa-xl heart-icon"></i>
+                            <i class="fa-solid fa-heart fa-xl heart-icon" style="display: none;"></i>
+                        </div>
+                        <h5 class="card-title">${item.title}</h5>
+                        
                         <p class="card-text card-categories">${categoryText}</p>
                         <p class="card-text">Prep time: ${item.prep_time} minutes</p>
                         <p class="card-text">Cook time: ${item.cook_time} minutes</p>
@@ -234,6 +302,8 @@ function writeCardList(array){
         </div>
         `
         html += modal;
+
+        
     }
     document.querySelector("#recipe-list").innerHTML = html;
 }

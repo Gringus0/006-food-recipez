@@ -46,6 +46,12 @@ header {
     display: none;
 }
 
+/* .fa-heart{
+    position: absolute;
+    top: 10%;
+    left: 8%;
+} */
+
 .image-container {
     position: relative;
     display: inline-block;
