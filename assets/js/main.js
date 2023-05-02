@@ -44,7 +44,7 @@ window.onload = function(){
                 if(localStorage.getItem("favourites")){
                     favourites = getFromLS("favourites");
                 }
-                
+                console.log(favourites);
                 
 
                 let heartIcons = document.querySelectorAll('.heart-icon');
@@ -70,7 +70,7 @@ window.onload = function(){
                                         favourites.push(element);
                                         addToLS("favourites", favourites);
                                     }
-                                    // console.log(favourites);
+                                    console.log(favourites);
                                     
                                 }
                             })
@@ -80,12 +80,12 @@ window.onload = function(){
                             result.forEach(element => {
                                 if(heartIcon.parentElement.nextElementSibling.textContent == element.title){
                                     if(favourites.includes(element)){
-                                        favourites = favourites.filter(favourite => favourite != element);
-                                        
+                                        favourites = favourites.filter(favourite => favourite.title != element.title);
+                                        // console.log(favourites);
                                         addToLS("favourites", favourites);
                                         
                                     }
-                                    // console.log(favourites);
+                                    console.log(favourites);
                                     
                                 }
                             })
