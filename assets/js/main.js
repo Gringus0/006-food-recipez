@@ -11,6 +11,10 @@ window.onload = function(){
 
     if (url == "/savoryspot/" || url == "/savoryspot/index.html") {
         
+            ajaxCB("categories.json", function(result){
+                addToLS("categoriesJSON", result);
+            })
+        
     }
     else if(url == "/savoryspot/recipes.html"){
         ajaxCB("recipes.json", function(result){
@@ -38,7 +42,10 @@ window.onload = function(){
         
     }
     else if(url == "/savoryspot/submit-recipe.html"){
-        let  categories = getFromLS("categoriesJSON");
+        
+        
+        let categories = getFromLS("categoriesJSON");
+        
         createDDL("#inputCategory", "category",  categories);
         document.querySelector("#addCategory").addEventListener("click", function(e){
             e.preventDefault();
