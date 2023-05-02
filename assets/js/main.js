@@ -39,7 +39,10 @@ window.onload = function(){
                 checkbox.addEventListener('change', filterChange);
             });
         })
-        
+
+
+        document.querySelector("#search-bar").addEventListener("keyup", search);
+
     }
     else if(url == "/savoryspot/submit-recipe.html"){
         ajaxCB("categories.json", function(result){
@@ -98,13 +101,28 @@ window.onload = function(){
                 document.querySelector(".category-select").parentElement.previousElementSibling.classList.add("hide");
             }
 
-
-            
-
             checkIngredientsOrInstructions("#ing1", "#ing2", "#ing3");
             checkIngredientsOrInstructions("#ins1", "#ins2", "#ins3");
         })
     }
+}
+
+function search(){
+    let input = document.querySelector("#search-bar");
+    let filter = input.value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+    for(let i = 0; i < cards.length; i++){
+        a = cards[i].querySelector(".card-body").querySelector(".card-title");
+        let txtValue = a.textContent;
+        if(txtValue.toLowerCase().indexOf(filter) > -1){
+            cards[i].style.display = "";
+        }
+        else{
+            cards[i].style.display = "none";
+        }
+        
+    }
+    
 }
 
 function checkIngredientsOrInstructions(in1, in2, in3){
@@ -366,10 +384,7 @@ function navigation(array){
                     </li>`;
         }
                     html += `</ul>
-                            <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Search for recipes" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form>
+                            
                         </div>
                     </div>
                 </nav>`
@@ -423,37 +438,3 @@ function ajaxCB(file, result){
         }
     })
 }
-
-
-
-
-
-
-// document.addEventListener("click", function(event) {
-//     if (event.target.classList.contains("modal-button")) {
-//         // code to display modal goes here
-//         let card = event.target.closest(".card");
-//         let title = card.querySelector(".card-title").textContent;
-//         let description = card.querySelector(".card-text").textContent;
-//         // etc. for other data attributes you need
-//         let modalHTML = `
-//                         <div class="modal">
-//                             <div class="modal-dialog">
-//                                 <div class="modal-content">
-//                                     <div class="modal-header">
-//                                         <h5 class="modal-title">${title}</h5>
-//                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-//                                     </div>
-//                                     <div class="modal-body">
-//                                         <p>${description}</p>
-//                                         <!-- add other data attributes here as needed -->
-//                                     </div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     `;
-
-//         document.body.insertAdjacentHTML("beforeend", modalHTML);
-
-//     }
-// });
