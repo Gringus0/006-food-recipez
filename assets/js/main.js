@@ -163,7 +163,7 @@ function writeCardList(array){
         let categories = [];
         html += `<div class="card col-4 mx-3" style="width: 18rem;">
                     <div class="image-container">
-                        <img src="${BASE_IMG}${item.img.src}" class="card-img-top card-image" alt="${item.img.alt}"/>
+                        <img src="${BASE_IMG}${item.img.src}" class="card-img-top card-image p-3" alt="${item.img.alt}"/>
                         <div class="center"><a href="#" class="btn btn-primary modal-button" data-bs-toggle="modal" data-bs-target="#modal${item.id}">Check it out!</a></div>
                     </div>
                     
