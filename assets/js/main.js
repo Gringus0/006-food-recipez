@@ -42,20 +42,94 @@ window.onload = function(){
         
     }
     else if(url == "/savoryspot/submit-recipe.html"){
-        
-        
+        ajaxCB("categories.json", function(result){
+            addToLS("categoriesJSON", result);
+        })
         let categories = getFromLS("categoriesJSON");
-        
-        createDDL("#inputCategory", "category",  categories);
+        createDDL("category-select","#inputCategory", "category",  categories);
         document.querySelector("#addCategory").addEventListener("click", function(e){
             e.preventDefault();
-            createDDL("#inputCategory", "category",  categories);
+            createDDL("category-select", "#inputCategory", "category",  categories);
         })
         
         addInput("#addIngredient", "#inputIngredients", "Apples");
         addInput("#addInstruction", "#inputInstructions", "Chop the apples");
         
+        let emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        let nameOfRecipeRegEx = /^[a-zA-Z]+(\s[a-zA-Z]+)*$/;
+        let cookPrepServRegEx = /^(0|[1-9][0-9]?|1[0-9]{2}|2[0-9]{2}|300)$/
+
+
         
+        document.querySelector("#submit-recipe").addEventListener("click", function(e){
+            e.preventDefault();
+            checkRegEx("#email", emailRegEx);
+            checkRegEx("#title", nameOfRecipeRegEx);
+            let descriptionValue = document.querySelector("#description").value;
+            if(descriptionValue.length < 50){
+                document.querySelector("#description").nextElementSibling.nextElementSibling.classList.remove("hide");
+            }
+            else {
+                document.querySelector("#description").nextElementSibling.nextElementSibling.classList.add("hide");
+            }
+            checkRegEx("#cooktime", cookPrepServRegEx);
+            checkRegEx("#preptime", cookPrepServRegEx);
+            checkRegEx("#number-of-servings", cookPrepServRegEx);
+
+            
+            let fileInput = document.querySelector('#formFile');
+            if(fileInput.files.length > 0){
+                var fileExtension = getFileExtension(fileInput.files[0].name);
+            }
+            
+            if(fileInput.files != null && fileInput.files.length > 0 && fileExtension == "jpg"){
+                fileInput.nextElementSibling.classList.add("hide");
+            } 
+            else{
+                fileInput.nextElementSibling.classList.remove("hide");
+            }
+
+
+            let categorySelectValue = document.querySelector(".category-select").value;
+            if(categorySelectValue == 0){
+                document.querySelector(".category-select").parentElement.previousElementSibling.classList.remove("hide");
+            }
+            else{
+                document.querySelector(".category-select").parentElement.previousElementSibling.classList.add("hide");
+            }
+
+
+            
+
+            checkIngredientsOrInstructions("#ing1", "#ing2", "#ing3");
+            checkIngredientsOrInstructions("#ins1", "#ins2", "#ins3");
+        })
+    }
+}
+
+function checkIngredientsOrInstructions(in1, in2, in3){
+    let in1Value = document.querySelector(in1).value;
+    let in2Value = document.querySelector(in2).value;
+    let in3Value = document.querySelector(in3).value;
+    if(in1Value == "" || in2Value == "" || in3Value == ""){
+        document.querySelector(in1).parentElement.parentElement.previousElementSibling.classList.remove("hide");
+    } 
+    else{
+        document.querySelector(in1).parentElement.parentElement.previousElementSibling.classList.add("hide");
+    }
+}
+
+function getFileExtension(filename){
+    return filename.substring(filename.lastIndexOf('.')+1, filename.length) || filename;
+}
+
+function checkRegEx(elementId, regEx){
+    let elementValue = document.querySelector(`${elementId}`).value;
+    if(elementValue == "" || elementValue == null ||  !regEx.test(elementValue)){
+        document.querySelector(`${elementId}`).nextElementSibling.nextElementSibling.classList.remove("hide");
+    }
+    else {
+        document.querySelector(`${elementId}`).nextElementSibling.nextElementSibling.classList.add("hide");
     }
 }
 
@@ -178,9 +252,9 @@ function createRadio(name, idArray, labelArray){
     document.querySelector("#sort").innerHTML += html;
 }
 
-function createDDL(divId, listName, array){
+function createDDL(selectClass, divId, listName, array){
     let html = ``;
-    html += `<select class="form-select">
+    html += `<select class="form-select ${selectClass}">
                 <option value="0">Choose a ${listName}</option>`
                 for(let item of array){
                     html += `<option value="${item.name.toLowerCase()}">${item.name}</option>`

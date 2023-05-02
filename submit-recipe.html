@@ -22,36 +22,39 @@
                 
                 
                 <div class="form-floating my-3">
+                    
                     <input type="email" class="form-control" id="email" placeholder="name@example.com">
-                    <label for="email">Email address:</label>
-                    <small class="form-text">We need your email address so we can contact you after you submit your recipe.</small><br/>
-                    <small class="form-text text-danger">You didn't enter a valid email. Example: johndoe123@email.com</small>
+                    <label for="email">Email address:*</label>
+                    <small class="form-text text-danger hide">You didn't enter a valid email. Example: johndoe123@email.com</small>
+                    <small class="form-text">We need your email address so we can contact you after you submit your recipe.</small>
+                    
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="title" placeholder="Shrimps">
-                    <label for="title">Name of the recipe:</label>
-                    <small class="form-text text-danger">You didn't enter a name.</small>
+                    <label for="title">Name of the recipe:*</label>
+                    <small class="form-text text-danger hide">You didn't enter a valid name. Example: Roasted Brussels Sprouts</small>
                 </div>
                 <div class="form-floating mb-3">
                     <textarea class="form-control" placeholder="Description..." id="description"></textarea>
-                    <label for="description">Description</label>
-                    <small class="form-text text-danger">You didn't enter a description.</small>
+                    <label for="description">Description:*</label>
+                    <small class="form-text text-danger hide">You didn't enter a description.</small>
+                    <small class="form-text">Description needs at liest 50 characters.</small>
                 </div>
                 <div class="row">
                     <div class="col-4 form-floating mb-3">
                         <input type="text" class="form-control" id="cooktime" placeholder="Shrimps">
-                        <label for="cooktime" style="left: 12px;">Cook time(minutes):</label>
-                        <small class="form-text text-danger">You didn't enter the cook time.</small>
+                        <label for="cooktime" style="left: 12px;">Cook time(minutes):*</label>
+                        <small class="form-text text-danger hide">You didn't enter a valid cook time.</small>
                     </div>
                     <div class="col-4 form-floating mb-3">
                         <input type="text" class="form-control" id="preptime" placeholder="Shrimps">
-                        <label for="preptime" style="left: 12px;">Prep time(minutes):</label>
-                        <small class="form-text text-danger">You didn't enter the prep time.</small>
+                        <label for="preptime" style="left: 12px;">Prep time(minutes):*</label>
+                        <small class="form-text text-danger hide">You didn't enter a valid prep time.</small>
                     </div>
                     <div class="col-4 form-floating mb-3">
                         <input type="text" class="form-control" id="number-of-servings" placeholder="Shrimps">
-                        <label for="number-of-servings" style="left: 12px;">Number of servings</label>
-                        <small class="form-text text-danger">You didn't enter number.</small>
+                        <label for="number-of-servings" style="left: 12px;">Number of servings:*</label>
+                        <small class="form-text text-danger hide">You didn't enter a valid number.</small>
                     </div>
                 </div>
                 <div class="row">
@@ -83,13 +86,14 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">Upload an image of your masterpiece</label>
+                    <label for="formFile" class="form-label">Upload an image of your masterpiece*</label>
                     <input class="form-control" type="file" id="formFile">
-                    <small class="form-text text-danger">You didn't upload a file.</small>
+                    <small class="form-text text-danger hide">You didn't upload a valid file.</small>
+                    <small class="form-text">File needs to have a .jpg extension.</small>
                 </div>
                 <div>
-                    <label for="">Categories:</label><br/>
-                    <small class="form-text text-danger">You didn't choose a category.</small>
+                    <label for="">Categories:*</label><br/>
+                    <small class="form-text text-danger hide">You didn't choose a category.</small>
                     <div id="inputCategory">
 
                     </div>
@@ -100,28 +104,28 @@
             </div>
             <div class="col-6">
                 <div id="ingredients" class="mt-3">
-                    <h6>Ingredients:</h6>
-                    <small class="form-text text-danger">You need at liest three ingredients.</small>
+                    <h6>Ingredients(at liest 3):*</h6>
+                    <small class="form-text text-danger hide">You need at liest three ingredients.</small>
                     <div class="form">
                         
                         <div id="inputIngredients">
-                            <input type="text" class="form-control mb-1" placeholder="Apples">
-                            <input type="text" class="form-control mb-1" placeholder="Steak">
-                            <input type="text" class="form-control mb-1" placeholder="Potatoes">
+                            <input type="text" class="form-control mb-1" id="ing1" placeholder="Apples">
+                            <input type="text" class="form-control mb-1" id="ing2" placeholder="Steak">
+                            <input type="text" class="form-control mb-1" id="ing3" placeholder="Potatoes">
                         </div>
                         <button class="btn btn-primary col-3" id="addIngredient">Add an ingredient</button>
                         
                     </div>
                 </div>
                 <div id="instructions" class="mt-3">
-                    <h6>Instructions:</h6>
-                    <small class="form-text text-danger">You need at liest three instructions.</small>
+                    <h6>Instructions(at liest 3):*</h6>
+                    <small class="form-text text-danger hide">You need at liest three instructions.</small>
                     <div class="form">
 
                         <div id="inputInstructions">
-                            <input type="text" class="form-control mb-1" placeholder="Chop the apples.">
-                            <input type="text" class="form-control mb-1" placeholder="Grill the steak.">
-                            <input type="text" class="form-control mb-1" placeholder="Mash the potatoes.">
+                            <input type="text" class="form-control mb-1" id="ins1" placeholder="Chop the apples.">
+                            <input type="text" class="form-control mb-1" id="ins2" placeholder="Grill the steak.">
+                            <input type="text" class="form-control mb-1" id="ins3" placeholder="Mash the potatoes.">
                         </div>
                         <button class="btn btn-primary col-3" id="addInstruction">Add an instruction</button>
                     </div>
@@ -130,7 +134,7 @@
 
             <div class="col-12 row">
                 <div class="col"></div>
-                <input type="submit" value="Submit the recipe" class="btn btn-primary my-3 col-5">
+                <input type="submit" value="Submit the recipe" id="submit-recipe" class="btn btn-primary my-3 col-5">
                 <div class="col"></div>
             </div>
         </form>
