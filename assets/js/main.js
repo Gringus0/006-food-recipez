@@ -1,7 +1,7 @@
 const BASE_URL= "https://gringus0.github.io/savoryspot/";
 const BASE_IMG = "assets/img/";
 var url = document.location.pathname;
-console.log(url);
+// console.log(url);
 // let categories =  getFromLS("");
 window.onload = function(){
     ajaxCB("menu.json", function(result){
@@ -17,15 +17,7 @@ window.onload = function(){
         
     }
     else if(url == "/savoryspot/recipes.html"){
-        ajaxCB("recipes.json", function(result){
-            let select = document.querySelector("#sort-select");
-            let selectedIndex = select.selectedIndex;
-            let selectedValue = select.options[selectedIndex].value;
-            if(selectedValue == 0){
-                writeCardList(result);
-            }
-            sortRecipes(result);
-        })
+        
         
         createRadio("sortDateAdded", ["sort-date-added-asc", "sort-date-added-desc"], ["Ascending", "Descending"]);
         createRadio("sortCookTime", ["sort-time-asc", "sort-time-desc"], ["Ascending", "Descending"])
@@ -38,9 +30,26 @@ window.onload = function(){
             categoryCheckboxes.forEach(function(checkbox) {
                 checkbox.addEventListener('change', filterChange);
             });
+            ajaxCB("recipes.json", function(result){
+                let select = document.querySelector("#sort-select");
+                let selectedIndex = select.selectedIndex;
+                let selectedValue = select.options[selectedIndex].value;
+                if(selectedValue == 0){
+                    writeCardList(result);
+                }
+                select.addEventListener("change", filterChange);
+                
+                sortRecipes(result);
+                // console.log(result);
+                // document.querySelector("#search-bar").addEventListener("keyup", function(result){
+                //     ajaxSearch(result);
+                // })
+            })
         })
 
-
+        // document.querySelector("#search-bar").addEventListener("keyup", function(array){
+        //     ajaxSearch(array);
+        // })
         document.querySelector("#search-bar").addEventListener("keyup", search);
 
     }
@@ -112,9 +121,11 @@ function search(){
     let filter = input.value.toLowerCase();
     let cards = document.querySelectorAll(".card");
     for(let i = 0; i < cards.length; i++){
-        a = cards[i].querySelector(".card-body").querySelector(".card-title");
-        let txtValue = a.textContent;
-        if(txtValue.toLowerCase().indexOf(filter) > -1){
+        let title = cards[i].querySelector(".card-body").querySelector(".card-title");
+        let titleValue = title.textContent;
+        let categories = cards[i].querySelector(".card-body").querySelector(".card-categories");
+        let categoriesValue = categories.textContent;
+        if(titleValue.toLowerCase().indexOf(filter) > -1 || categoriesValue.toLowerCase().indexOf(filter) > -1){
             cards[i].style.display = "";
         }
         else{
@@ -173,7 +184,7 @@ function writeCardList(array){
                     })
                     let categoryText = categories.join(", ");
                     html += `<h5 class="card-title">${item.title}</h5>
-                        <p class="card-text">${categoryText}</p>
+                        <p class="card-text card-categories">${categoryText}</p>
                         <p class="card-text">Prep time: ${item.prep_time} minutes</p>
                         <p class="card-text">Cook time: ${item.cook_time} minutes</p>
                         <p class="card-text">${item.description}</p>
@@ -245,13 +256,13 @@ function getFromLS(name){
 function addInput(divInputId, divButtonId, placeholder){
     document.querySelector(`${divInputId}`).addEventListener("click", function(e){
         e.preventDefault();
-        document.querySelector(`${divButtonId}`).innerHTML += `<input type="text" class="form-control mb-1" placeholder="${placeholder}">`
+        document.querySelector(`${divButtonId}`).innerHTML += `<input type="text" class="form-control mb-1" placeholder="${placeholder}"/>`
     })
 }
 
 function createCheckbox(name, id){
     let html = `<div class="form-check">
-                <input class="form-check-input category" type="checkbox" value="${id}" id="${name}" name="${name.toLowerCase()}">
+                <input class="form-check-input category" type="checkbox" value="${id}" id="${name}" name="${name.toLowerCase()}"/>
                 <label class="form-check-label" for="${name}">${name}</label>
             </div>`        
     document.querySelector("#filter").innerHTML += html;
@@ -262,7 +273,7 @@ function createRadio(name, idArray, labelArray){
     html += `<div id="${name}" class="hide">`
     for(let i = 0; i < idArray.length; i++){
         html += `<div class="form-check">
-                        <input class="form-check-input" type="radio" name="${name}" id="${idArray[i]}" value="${idArray[i]}">
+                        <input class="form-check-input" type="radio" name="${name}" id="${idArray[i]}" value="${idArray[i]}"/>
                         <label class="form-check-label" for="${idArray[i]}">${labelArray[i]}</label>
                     </div>`         
     }
@@ -311,6 +322,7 @@ function sortRecipes(array) {
 
 
     sortDateAddedRadios.forEach(radio => {
+        
         radio.addEventListener('change', () => {
             
             const value = radio.value;
@@ -319,17 +331,21 @@ function sortRecipes(array) {
             if (value === 'sort-date-added-asc') {
                 array.sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded));
                 writeCardList(array);
+                radio.addEventListener("change", search())
             } else if (value === 'sort-date-added-desc') {
                 array.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
                 writeCardList(array);
+                radio.addEventListener("change", search())
             }
         
             
-            console.log(array);
+            // console.log(array);
         });
+        
     });
     
     sortCookTimeRadios.forEach(radio => {
+        
         radio.addEventListener('change', () => {
             
             const value = radio.value;
@@ -338,14 +354,17 @@ function sortRecipes(array) {
             if (value === 'sort-time-asc') {
                 array.sort((a, b) => a.cook_time + a.prep_time - b.cook_time - b.prep_time);
                 writeCardList(array);
+                radio.addEventListener("change", search())
             } else if (value === 'sort-time-desc') {
                 array.sort((a, b) => b.cook_time + b.prep_time - a.cook_time - a.prep_time);
                 writeCardList(array);
+                radio.addEventListener("change", search())
             }
         
             
-            console.log(array);
+            // console.log(array);
         });
+        
     });
     
     return array;
@@ -394,13 +413,15 @@ function navigation(array){
 function footer(){
     let html = `<p class="m-0">Made by:&nbsp</p>
                 <a href="#" class="text-dark">Aleksandar Jovanović 104/21</a>
-                <p class="m-0">&copy Visoka ICT Škola</p>`
+                <p class="m-0">&copy Visoka ICT Škola</p>
+                <i class="fa-solid fa-sitemap" style="color: #000000;"></i>`
     document.querySelector("footer").innerHTML = html;
 }
 
 function filterChange(){
     ajaxCB("recipes.json", function(result){
         writeCardList(result);
+        search();
     })
 }
 
