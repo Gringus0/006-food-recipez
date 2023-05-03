@@ -240,8 +240,8 @@ function writeCardList(array){
                             
                             
                             html += 
-                            `<i class="fa-regular fa-heart fa-xl heart-icon"></i>
-                            <i class="fa-solid fa-heart fa-xl heart-icon" style="display: none;"></i>
+                            `<i class="fa-regular fa-heart fa-xl heart-icon" style="color: #ff0000;"></i>
+                            <i class="fa-solid fa-heart fa-xl heart-icon" style="display: none; color: #ff0000;"></i>
                         </div>
                         <h5 class="card-title">${item.title}</h5>
                         
