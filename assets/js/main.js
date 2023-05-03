@@ -91,6 +91,13 @@ window.onload = function(){
                     })
                     
                 });
+
+                document.querySelector("#my-favourites").addEventListener("click", function(){
+                    writeCardList(favourites);
+                    document.querySelectorAll(".fa-heart").forEach(heartIcon => {
+                        heartIcon.classList.replace("fa-regular", "fa-solid");
+                    })
+                })
                 
             })
             
