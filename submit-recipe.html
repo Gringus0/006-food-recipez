@@ -19,7 +19,7 @@
     <div class="container mt-5">
         <h1 class="text-center">Submit a recipe</h1>
         <form class="row p-2 my-5 border bg-light rounded-3">
-            <div class="col-6">
+            <div class="col-sm-12 col-md-12 col-lg-6">
                 
                 
                 <div class="form-floating my-3">
@@ -42,17 +42,17 @@
                     <small class="form-text">Description needs at liest 50 characters.</small>
                 </div>
                 <div class="row">
-                    <div class="col-4 form-floating mb-3">
+                    <div class="col-md-4 form-floating mb-3">
                         <input type="text" class="form-control" id="cooktime" placeholder="Shrimps"/>
                         <label for="cooktime" style="left: 12px;">Cook time(minutes):*</label>
                         <small class="form-text text-danger hide">You didn't enter a valid cook time.</small>
                     </div>
-                    <div class="col-4 form-floating mb-3">
+                    <div class="col-md-4 form-floating mb-3">
                         <input type="text" class="form-control" id="preptime" placeholder="Shrimps"/>
                         <label for="preptime" style="left: 12px;">Prep time(minutes):*</label>
                         <small class="form-text text-danger hide">You didn't enter a valid prep time.</small>
                     </div>
-                    <div class="col-4 form-floating mb-3">
+                    <div class="col-md-4 form-floating mb-3">
                         <input type="text" class="form-control" id="number-of-servings" placeholder="Shrimps"/>
                         <label for="number-of-servings" style="left: 12px;">Number of servings:*</label>
                         <small class="form-text text-danger hide">You didn't enter a valid number.</small>
@@ -60,27 +60,27 @@
                 </div>
                 <div class="row">
                     <h6>Nutritional Value: </h6>
-                    <div class="col form-floating mb-3">
+                    <div class="col-12 col-md-12 form-floating mb-3">
                         <input type="text" class="form-control" id="calories" placeholder="calories"/>
                         <label for="calories" style="left: 12px;">Calories</label>
                         
                     </div>
-                    <div class="col form-floating mb-3">
+                    <div class="col-12 col-md-3 form-floating mb-3">
                         <input type="text" class="form-control" id="fat" placeholder="fat"/>
                         <label for="fat" style="left: 12px;">Fat</label>
                         
                     </div>
-                    <div class="col form-floating mb-3">
+                    <div class="col-12 col-md-3 form-floating mb-3">
                         <input type="text" class="form-control" id="carbohydrates" placeholder="carbohydrates"/>
                         <label for="carbohydrates" style="left: 12px;">CHO</label>
                         
                     </div>
-                    <div class="col form-floating mb-3">
+                    <div class="col-12 col-md-3 form-floating mb-3">
                         <input type="text" class="form-control" id="protein" placeholder="protein"/>
                         <label for="protein" style="left: 12px;">Protein</label>
                         
                     </div>
-                    <div class="col form-floating mb-3">
+                    <div class="col-12 col-md-3 form-floating mb-3">
                         <input type="text" class="form-control" id="sodium" placeholder="sodium"/>
                         <label for="sodium" style="left: 12px;">Sodium</label>
                         
@@ -103,7 +103,7 @@
 
                   
             </div>
-            <div class="col-6">
+            <div class="col-sm-12 col-md-12 col-lg-6">
                 <div id="ingredients" class="mt-3">
                     <h6>Ingredients(at liest 3):*</h6>
                     <small class="form-text text-danger hide">You need at liest three ingredients.</small>
@@ -114,7 +114,7 @@
                             <input type="text" class="form-control mb-1" id="ing2" placeholder="Steak"/>
                             <input type="text" class="form-control mb-1" id="ing3" placeholder="Potatoes"/>
                         </div>
-                        <button class="btn btn-primary col-3" id="addIngredient">Add an ingredient</button>
+                        <button class="btn btn-primary" id="addIngredient">Add an ingredient</button>
                         
                     </div>
                 </div>
@@ -128,14 +128,14 @@
                             <input type="text" class="form-control mb-1" id="ins2" placeholder="Grill the steak."/>
                             <input type="text" class="form-control mb-1" id="ins3" placeholder="Mash the potatoes."/>
                         </div>
-                        <button class="btn btn-primary col-3" id="addInstruction">Add an instruction</button>
+                        <button class="btn btn-primary" id="addInstruction">Add an instruction</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 row">
                 <div class="col"></div>
-                <input type="submit" value="Submit the recipe" id="submit-recipe" class="btn btn-primary my-3 col-5"/>
+                <input type="submit" value="Submit the recipe" id="submit-recipe" class="btn btn-primary my-3 col-sm-5 col-9"/>
                 <div class="col"></div>
             </div>
         </form>

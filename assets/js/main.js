@@ -225,7 +225,7 @@ function writeCardList(array){
     for(let item of array){
         let categoriesJSON = getFromLS("categoriesJSON");
         let categories = [];
-        html += `<div class="card col-4 mx-3" style="width: 18rem;">
+        html += `<div class="card m-3" style="width: 18rem;">
                     <div class="image-container">
                         
                         
@@ -243,11 +243,8 @@ function writeCardList(array){
                     })
                     let categoryText = categories.join(", ");
                     html += `
-                        <div class="heart-icon-container mb-2 text-center">`
-                            
-                            
-                            html += 
-                            `<i class="fa-regular fa-heart fa-xl heart-icon" style="color: #ff0000;"></i>
+                        <div class="heart-icon-container mb-2 text-center">
+                            <i class="fa-regular fa-heart fa-xl heart-icon" style="color: #ff0000;"></i>
                             <i class="fa-solid fa-heart fa-xl heart-icon" style="display: none; color: #ff0000;"></i>
                         </div>
                         <h5 class="card-title">${item.title}</h5>
@@ -267,14 +264,14 @@ function writeCardList(array){
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body row">
-                        <div class="col-3">
+                        <div class="col-sm-3">
                             <img src="${BASE_IMG}${item.img.src}" class="col-12" alt="${item.img.alt}"/>
                             <small>Date added: ${item.dateAdded}</small>
                             <p class="mt-2">Prep time: ${item.prep_time} minutes</p>
                             <p class="">Cook time: ${item.cook_time} minutes</p>
                             <p class="">Number of servings: ${item.servings}</p>
                         </div>
-                        <div class="col-3">
+                        <div class="col-sm-3">
                             <h6>Ingredients:</h6>`
                             item.ingredients.forEach((ingredient, index) => {
                                 modal += `
@@ -283,7 +280,7 @@ function writeCardList(array){
                             })
                         modal +=`
                         </div>
-                        <div class="col-3">
+                        <div class="col-sm-3">
                             <h6>Instructions:</h6>`
                             item.instructions.forEach((instruction, index) => {
                                 modal += `
@@ -291,7 +288,7 @@ function writeCardList(array){
                                 `
                             })
                         modal += `</div>
-                        <div class="col-3">
+                        <div class="col-sm-3">
                             <h6>Nutritional information:</h6>
                             <p class="mb-1">Calories: ${item.nutritional_info.calories}kcal</p>
                             <p class="mb-1">Fat: ${item.nutritional_info.fat}g</p>

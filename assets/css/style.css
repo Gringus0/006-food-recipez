@@ -4,7 +4,7 @@
     font-family: 'Roboto', sans-serif;
 }
 #cover {
-    background-image: url(../img/cover-blurred.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/cover-blurred.jpg);
     background-repeat: no-repeat;
     height: 100vh;
     background-size: cover;
@@ -92,4 +92,28 @@ header {
 #submit-body {
     background: rgb(164,152,152);
     background: linear-gradient(135deg, rgba(164,152,152,1) 0%, rgba(219,239,240,1) 33%, rgba(230,161,44,1) 66%, rgba(254,97,82,1) 100%);
+}
+
+@media screen and (max-width: 576px){
+    .sticky {
+        position: -webkit-sticky;
+        position: relative;
+        top: 0;
+    }
+    h6 {
+        margin-top: 10px;
+    }
+    .lead {
+        font-size: medium;
+    }
+    #cover {
+       height: 130vh;
+    }
+    #main-title{
+        font-size: 300%;
+        margin-bottom: 50px;
+    }
+    main {
+        margin: 10%;
+    }
 }
