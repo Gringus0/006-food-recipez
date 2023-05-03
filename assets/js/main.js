@@ -237,10 +237,7 @@ function writeCardList(array){
                     let categoryText = categories.join(", ");
                     html += `
                         <div class="heart-icon-container mb-2 text-center">`
-                            // console.log(item);
                             
-                            // console.log(favourites);
-
                             
                             html += 
                             `<i class="fa-regular fa-heart fa-xl heart-icon"></i>
@@ -366,7 +363,7 @@ function sortRecipes(array) {
     let sortCookTime = document.querySelector('#sortCookTime');
 
 
-
+    
 
                 
 
@@ -412,7 +409,7 @@ function sortRecipes(array) {
                 radio.addEventListener("change", search())
             }
         
-            
+            favourite(array);
             // console.log(array);
         });
         
@@ -435,7 +432,7 @@ function sortRecipes(array) {
                 radio.addEventListener("change", search())
             }
         
-            
+            favourite(array);
             // console.log(array);
         });
         
@@ -505,7 +502,64 @@ function filterChange(){
     ajaxCB("recipes.json", function(result){
         writeCardList(result);
         search();
+
+        favourite(result);
+
+        
     })
+}
+
+function favourite(array){
+    let favourites = [];
+    if(localStorage.getItem("favourites")){
+        favourites = getFromLS("favourites");
+    }
+    // console.log(favourites);
+    
+
+    let heartIcons = document.querySelectorAll('.heart-icon');
+
+    favourites.forEach(favourite => {
+        // console.log(favourite);
+        heartIcons.forEach(heartIcon =>{
+            if(heartIcon.parentElement.nextElementSibling.textContent == favourite.title){
+                heartIcon.classList.replace("fa-regular", "fa-solid");
+            }
+        })
+    })
+
+    
+    
+    heartIcons.forEach(heartIcon => {
+        heartIcon.addEventListener("click", function(){
+            if(heartIcon.classList.contains("fa-regular")){
+                heartIcon.classList.replace("fa-regular", "fa-solid");
+                array.forEach(element => {
+                    if(heartIcon.parentElement.nextElementSibling.textContent == element.title){
+                        if(!favourites.includes(element)){
+                            element.favourite = true;
+                            favourites.push(element);
+                            addToLS("favourites", favourites);
+                        }
+                        console.log(favourites);
+                        
+                    }
+                })
+            }
+            else{
+                heartIcon.classList.replace("fa-solid", "fa-regular");
+                array.forEach(element => {
+                    if(heartIcon.parentElement.nextElementSibling.textContent == element.title){
+                        favourites = favourites.filter(favourite => favourite.title != element.title);
+                        addToLS("favourites", favourites);
+                        console.log(favourites);
+                    }
+                })
+            }
+            
+        })
+        
+    });
 }
 
 function ajaxCB(file, result){
