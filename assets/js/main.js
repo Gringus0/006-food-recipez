@@ -3,6 +3,10 @@ let BASE_IMG = "assets/img/";
 var url = document.location.pathname;
 // console.log(url);
 window.onload = function(){
+    setTimeout(function() {
+        var loadingScreen = document.getElementById("loading-screen");
+        loadingScreen.style.display = "none";
+      }, 1500);
     ajaxCB("menu.json", function(result){
         navigation(result);
     });

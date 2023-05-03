@@ -94,6 +94,21 @@ header {
     background: linear-gradient(135deg, rgba(164,152,152,1) 0%, rgba(219,239,240,1) 33%, rgba(230,161,44,1) 66%, rgba(254,97,82,1) 100%);
 }
 
+#loading-screen {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fffafc;
+}
+  
+
 @media screen and (max-width: 576px){
     .sticky {
         position: -webkit-sticky;
@@ -113,7 +128,5 @@ header {
         font-size: 300%;
         margin-bottom: 50px;
     }
-    main {
-        margin: 10%;
-    }
+    
 }
