@@ -72,7 +72,7 @@ window.onload = function(){
                                         favourites.push(element);
                                         addToLS("favourites", favourites);
                                     }
-                                    console.log(favourites);
+                                    // console.log(favourites);
                                     
                                 }
                             })
@@ -83,7 +83,7 @@ window.onload = function(){
                                 if(heartIcon.parentElement.nextElementSibling.textContent == element.title){
                                     favourites = favourites.filter(favourite => favourite.title != element.title);
                                     addToLS("favourites", favourites);
-                                    console.log(favourites);
+                                    // console.log(favourites);
                                 }
                             })
                         }
@@ -119,7 +119,7 @@ window.onload = function(){
         
         let emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         let nameOfRecipeRegEx = /^[a-zA-Z]+(\s[a-zA-Z]+)*$/;
-        let cookPrepServRegEx = /^(0|[1-9][0-9]?|1[0-9]{2}|2[0-9]{2}|300)$/
+        let cookPrepServRegEx = /^(0|[1-9][0-9]?|1[0-9]{2}|2[0-9]{2}|300)$/;
 
 
         

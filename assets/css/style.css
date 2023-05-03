@@ -46,12 +46,6 @@ header {
     display: none;
 }
 
-/* .fa-heart{
-    position: absolute;
-    top: 10%;
-    left: 8%;
-} */
-
 .image-container {
     position: relative;
     display: inline-block;
@@ -92,14 +86,10 @@ header {
 
 #recipes-body {
     background: rgb(164,152,152);
-background: linear-gradient(135deg, rgba(164,152,152,1) 0%, rgba(219,239,240,1) 33%, rgba(230,161,44,1) 66%, rgba(254,97,82,1) 100%);
+    background: linear-gradient(135deg, rgba(164,152,152,1) 0%, rgba(219,239,240,1) 33%, rgba(230,161,44,1) 66%, rgba(254,97,82,1) 100%);
 }
 
 #submit-body {
-    /* background: rgb(158,31,58);
-    background: linear-gradient(305deg, rgba(158,31,58,1) 0%, rgba(208,46,56,1) 33%, rgba(228,121,17,1) 66%, rgba(250,187,68,1) 100%); */
-    /* background: rgb(228,74,109);
-    background: linear-gradient(270deg, rgba(228,74,109,1) 0%, rgba(250,171,177,1) 33%, rgba(136,215,203,1) 66%, rgba(2,164,177,1) 100%); */
     background: rgb(164,152,152);
-background: linear-gradient(135deg, rgba(164,152,152,1) 0%, rgba(219,239,240,1) 33%, rgba(230,161,44,1) 66%, rgba(254,97,82,1) 100%);
+    background: linear-gradient(135deg, rgba(164,152,152,1) 0%, rgba(219,239,240,1) 33%, rgba(230,161,44,1) 66%, rgba(254,97,82,1) 100%);
 }
