@@ -1,5 +1,5 @@
-const BASE_URL= "https://gringus0.github.io/savoryspot/";
-const BASE_IMG = "assets/img/";
+let BASE_URL= "https://gringus0.github.io/savoryspot/";
+let BASE_IMG = "assets/img/";
 var url = document.location.pathname;
 // console.log(url);
 window.onload = function(){
@@ -19,15 +19,16 @@ window.onload = function(){
         
         
         createRadio("sortDateAdded", ["sort-date-added-asc", "sort-date-added-desc"], ["Ascending", "Descending"]);
-        createRadio("sortCookTime", ["sort-time-asc", "sort-time-desc"], ["Ascending", "Descending"])
+        createRadio("sortCookTime", ["sort-time-asc", "sort-time-desc"], ["Ascending", "Descending"]);
         ajaxCB("categories.json", function(result){
             result.forEach(category => {
                 createCheckbox(category.name, category.id);
             });
             addToLS("categoriesJSON", result);
-            const categoryCheckboxes = document.querySelectorAll('.category');
+            let categoryCheckboxes = document.querySelectorAll('.category');
             categoryCheckboxes.forEach(function(checkbox) {
                 checkbox.addEventListener('change', filterChange);
+                
             });
             ajaxCB("recipes.json", function(result){
                 let select = document.querySelector("#sort-select");
@@ -44,7 +45,7 @@ window.onload = function(){
                 if(localStorage.getItem("favourites")){
                     favourites = getFromLS("favourites");
                 }
-                console.log(favourites);
+                // console.log(favourites);
                 
 
                 let heartIcons = document.querySelectorAll('.heart-icon');
@@ -67,6 +68,7 @@ window.onload = function(){
                             result.forEach(element => {
                                 if(heartIcon.parentElement.nextElementSibling.textContent == element.title){
                                     if(!favourites.includes(element)){
+                                        element.favourite = true;
                                         favourites.push(element);
                                         addToLS("favourites", favourites);
                                     }
@@ -79,14 +81,9 @@ window.onload = function(){
                             heartIcon.classList.replace("fa-solid", "fa-regular");
                             result.forEach(element => {
                                 if(heartIcon.parentElement.nextElementSibling.textContent == element.title){
-                                    if(favourites.includes(element)){
-                                        favourites = favourites.filter(favourite => favourite.title != element.title);
-                                        // console.log(favourites);
-                                        addToLS("favourites", favourites);
-                                        
-                                    }
+                                    favourites = favourites.filter(favourite => favourite.title != element.title);
+                                    addToLS("favourites", favourites);
                                     console.log(favourites);
-                                    
                                 }
                             })
                         }
@@ -239,8 +236,14 @@ function writeCardList(array){
                     })
                     let categoryText = categories.join(", ");
                     html += `
-                        <div class="heart-icon-container mb-2 text-center">
-                            <i class="fa-regular fa-heart fa-xl heart-icon"></i>
+                        <div class="heart-icon-container mb-2 text-center">`
+                            // console.log(item);
+                            
+                            // console.log(favourites);
+
+                            
+                            html += 
+                            `<i class="fa-regular fa-heart fa-xl heart-icon"></i>
                             <i class="fa-solid fa-heart fa-xl heart-icon" style="display: none;"></i>
                         </div>
                         <h5 class="card-title">${item.title}</h5>
@@ -302,7 +305,7 @@ function writeCardList(array){
         </div>
         `
         html += modal;
-
+        
         
     }
     document.querySelector("#recipe-list").innerHTML = html;
@@ -358,14 +361,22 @@ function createDDL(selectClass, divId, listName, array){
 }
 
 function sortRecipes(array) {
-    const select = document.querySelector('#sort-select');
-    const sortDateAdded = document.querySelector('#sortDateAdded');
-    const sortCookTime = document.querySelector('#sortCookTime');
+    let select = document.querySelector('#sort-select');
+    let sortDateAdded = document.querySelector('#sortDateAdded');
+    let sortCookTime = document.querySelector('#sortCookTime');
 
-    
+
+
+
+                
+
+
+
+
+
     select.addEventListener('change', () => {
         
-        const value = select.value;
+        let value = select.value;
     
         
         sortDateAdded.classList.add('hide');
@@ -380,15 +391,15 @@ function sortRecipes(array) {
     });
 
     
-    const sortDateAddedRadios = document.querySelectorAll('[name="sortDateAdded"]');
-    const sortCookTimeRadios = document.querySelectorAll('[name="sortCookTime"]');
+    let sortDateAddedRadios = document.querySelectorAll('[name="sortDateAdded"]');
+    let sortCookTimeRadios = document.querySelectorAll('[name="sortCookTime"]');
 
 
     sortDateAddedRadios.forEach(radio => {
         
         radio.addEventListener('change', () => {
             
-            const value = radio.value;
+            let value = radio.value;
         
             
             if (value === 'sort-date-added-asc') {
@@ -411,7 +422,7 @@ function sortRecipes(array) {
         
         radio.addEventListener('change', () => {
             
-            const value = radio.value;
+            let value = radio.value;
         
             
             if (value === 'sort-time-asc') {
@@ -435,7 +446,7 @@ function sortRecipes(array) {
 
 function categoryFilter(array) {
     let checkedCategories = [];
-    const categoryCheckboxes = document.querySelectorAll('.category:checked');
+    let categoryCheckboxes = document.querySelectorAll('.category:checked');
     categoryCheckboxes.forEach(function(checkbox) {
       checkedCategories.push(parseInt(checkbox.value));
     });
