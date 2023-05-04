@@ -12,6 +12,17 @@
     
 }
 
+.textarea-wrapper {
+    position: relative;
+}
+  
+#description-counter {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+  
+
 #nav-title {
     font-family: 'Pacifico', cursive;
 }

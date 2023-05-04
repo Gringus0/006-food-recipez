@@ -127,6 +127,15 @@ window.onload = function(){
             e.preventDefault();
             createDDL("category-select", "#inputCategory", "category",  categories);
         })
+
+        let description = document.getElementById("description");
+        let charCount = document.getElementById("description-counter");
+
+        description.addEventListener("keyup", () => {
+            charCount.innerText = `${description.value.length}/100 characters`;
+            descriptionValidate();
+        });
+
         
         addInput("#addIngredient", "#inputIngredients", "Apples");
         addInput("#addInstruction", "#inputInstructions", "Chop the apples");
@@ -137,7 +146,9 @@ window.onload = function(){
         validateOnBlur("#cooktime", cookTimeValidate);
         validateOnBlur("#preptime", prepTimeValidate);
         validateOnBlur("#number-of-servings", numOfServingsValidate);
-
+        validateOnBlur(".category-select", categoryInputValidate);
+        document.querySelector("#formFile").addEventListener("change", fileValidate);
+        
 
         document.querySelector("#submit-recipe").addEventListener("click", function(e){
             e.preventDefault();
@@ -162,11 +173,15 @@ function nameOfRecipeValidate(){
 
 function descriptionValidate(){
     let descriptionValue = document.querySelector("#description").value;
-    if(descriptionValue.length < 50){
-        document.querySelector("#description").nextElementSibling.nextElementSibling.classList.remove("hide");
+    if(descriptionValue.length < 50 || descriptionValue.length > 100){
+        document.querySelector("#description").parentElement.nextElementSibling.classList.remove("hide");
+        document.querySelector(`#description`).classList.add("border-danger");
+        document.querySelector(`#description`).classList.remove("border-success");
     }
     else {
-        document.querySelector("#description").nextElementSibling.nextElementSibling.classList.add("hide");
+        document.querySelector("#description").parentElement.nextElementSibling.classList.add("hide");
+        document.querySelector(`#description`).classList.remove("border-danger");
+        document.querySelector(`#description`).classList.add("border-success");
     }
 }
 
@@ -190,19 +205,29 @@ function fileValidate(){
     
     if(fileInput.files != null && fileInput.files.length > 0 && fileExtension == "jpg"){
         fileInput.nextElementSibling.classList.add("hide");
+        fileInput.classList.remove("border-danger");
+        fileInput.classList.add("border-success");
+        
     } 
     else{
         fileInput.nextElementSibling.classList.remove("hide");
+        fileInput.classList.add("border-danger");
+        fileInput.classList.remove("border-success");
     }
 }
 
 function categoryInputValidate(){
-    let categorySelectValue = document.querySelector(".category-select").value;
+    let categorySelect = document.querySelector(".category-select");
+    let categorySelectValue = categorySelect.value;
     if(categorySelectValue == 0){
-        document.querySelector(".category-select").parentElement.previousElementSibling.classList.remove("hide");
+        categorySelect.parentElement.previousElementSibling.classList.remove("hide");
+        categorySelect.classList.add("border-danger");
+        categorySelect.classList.remove("border-success");
     }
     else{
-        document.querySelector(".category-select").parentElement.previousElementSibling.classList.add("hide");
+        categorySelect.parentElement.previousElementSibling.classList.add("hide");
+        categorySelect.classList.remove("border-danger");
+        categorySelect.classList.add("border-success");
     }
 }
 
@@ -256,12 +281,17 @@ function getFileExtension(filename){
 }
 
 function checkRegEx(elementId, regEx){
-    let elementValue = document.querySelector(`${elementId}`).value;
+    let element = document.querySelector(`${elementId}`)
+    let elementValue = element.value;
     if(elementValue == "" || elementValue == null ||  !regEx.test(elementValue)){
-        document.querySelector(`${elementId}`).nextElementSibling.nextElementSibling.classList.remove("hide");
+        element.nextElementSibling.nextElementSibling.classList.remove("hide");
+        element.classList.add("border-danger");
+        element.classList.remove("border-success");
     }
     else {
-        document.querySelector(`${elementId}`).nextElementSibling.nextElementSibling.classList.add("hide");
+        element.nextElementSibling.nextElementSibling.classList.add("hide");
+        element.classList.remove("border-danger");
+        element.classList.add("border-success");
     }
 }
 
