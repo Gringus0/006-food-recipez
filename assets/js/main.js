@@ -8,8 +8,11 @@ let cookPrepServRegEx = /^(0|[1-9][0-9]?|1[0-9]{2}|2[0-9]{2}|300)$/;
 window.onload = function(){
     setTimeout(function() {
         var loadingScreen = document.getElementById("loading-screen");
-        loadingScreen.style.display = "none";
-      }, 1500);
+        loadingScreen.style.opacity = "0";
+        setTimeout(function() {
+          loadingScreen.style.display = "none";
+        }, 500);
+      }, 1300);
     ajaxCB("menu.json", function(result){
         navigation(result);
     });
@@ -128,8 +131,8 @@ window.onload = function(){
             createDDL("category-select", "#inputCategory", "category",  categories);
         })
 
-        let description = document.getElementById("description");
-        let charCount = document.getElementById("description-counter");
+        let description = document.querySelector("#description");
+        let charCount = document.querySelector("#description-counter");
 
         description.addEventListener("keyup", () => {
             charCount.innerText = `${description.value.length}/100 characters`;

@@ -114,13 +114,13 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #ffffff;
+    background-color: #fffafc;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fffafc;
-}
-  
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}  
 
 @media screen and (max-width: 576px){
     .sticky {
