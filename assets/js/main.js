@@ -1,6 +1,9 @@
 let BASE_URL= "https://gringus0.github.io/savoryspot/";
 let BASE_IMG = "assets/img/";
 var url = document.location.pathname;
+let emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+let nameOfRecipeRegEx = /^[a-zA-Z]+(\s[a-zA-Z]+)*$/;
+let cookPrepServRegEx = /^(0|[1-9][0-9]?|1[0-9]{2}|2[0-9]{2}|300)$/;
 // console.log(url);
 window.onload = function(){
     setTimeout(function() {
@@ -128,53 +131,92 @@ window.onload = function(){
         addInput("#addIngredient", "#inputIngredients", "Apples");
         addInput("#addInstruction", "#inputInstructions", "Chop the apples");
         
-        let emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        let nameOfRecipeRegEx = /^[a-zA-Z]+(\s[a-zA-Z]+)*$/;
-        let cookPrepServRegEx = /^(0|[1-9][0-9]?|1[0-9]{2}|2[0-9]{2}|300)$/;
+        validateOnBlur("#email", emailValidate);
+        validateOnBlur("#title", nameOfRecipeValidate);
+        validateOnBlur("#description", descriptionValidate);
+        validateOnBlur("#cooktime", cookTimeValidate);
+        validateOnBlur("#preptime", prepTimeValidate);
+        validateOnBlur("#number-of-servings", numOfServingsValidate);
 
 
-        
         document.querySelector("#submit-recipe").addEventListener("click", function(e){
             e.preventDefault();
-            checkRegEx("#email", emailRegEx);
-            checkRegEx("#title", nameOfRecipeRegEx);
-            let descriptionValue = document.querySelector("#description").value;
-            if(descriptionValue.length < 50){
-                document.querySelector("#description").nextElementSibling.nextElementSibling.classList.remove("hide");
-            }
-            else {
-                document.querySelector("#description").nextElementSibling.nextElementSibling.classList.add("hide");
-            }
-            checkRegEx("#cooktime", cookPrepServRegEx);
-            checkRegEx("#preptime", cookPrepServRegEx);
-            checkRegEx("#number-of-servings", cookPrepServRegEx);
-
-            
-            let fileInput = document.querySelector('#formFile');
-            if(fileInput.files.length > 0){
-                var fileExtension = getFileExtension(fileInput.files[0].name);
-            }
-            
-            if(fileInput.files != null && fileInput.files.length > 0 && fileExtension == "jpg"){
-                fileInput.nextElementSibling.classList.add("hide");
-            } 
-            else{
-                fileInput.nextElementSibling.classList.remove("hide");
-            }
-
-
-            let categorySelectValue = document.querySelector(".category-select").value;
-            if(categorySelectValue == 0){
-                document.querySelector(".category-select").parentElement.previousElementSibling.classList.remove("hide");
-            }
-            else{
-                document.querySelector(".category-select").parentElement.previousElementSibling.classList.add("hide");
-            }
-
-            checkIngredientsOrInstructions("#ing1", "#ing2", "#ing3");
-            checkIngredientsOrInstructions("#ins1", "#ins2", "#ins3");
+            formValidate();
         })
     }
+}
+
+function validateOnBlur(id, func){
+    document.querySelector(id).addEventListener("blur", function(){
+        func();
+    })
+}
+
+function emailValidate(){
+    checkRegEx("#email", emailRegEx);
+}
+
+function nameOfRecipeValidate(){
+    checkRegEx("#title", nameOfRecipeRegEx);
+}
+
+function descriptionValidate(){
+    let descriptionValue = document.querySelector("#description").value;
+    if(descriptionValue.length < 50){
+        document.querySelector("#description").nextElementSibling.nextElementSibling.classList.remove("hide");
+    }
+    else {
+        document.querySelector("#description").nextElementSibling.nextElementSibling.classList.add("hide");
+    }
+}
+
+function cookTimeValidate(){
+    checkRegEx("#cooktime", cookPrepServRegEx);
+}
+
+function prepTimeValidate(){
+    checkRegEx("#preptime", cookPrepServRegEx);
+}
+
+function numOfServingsValidate(){
+    checkRegEx("#number-of-servings", cookPrepServRegEx);
+}
+
+function fileValidate(){
+    let fileInput = document.querySelector('#formFile');
+    if(fileInput.files.length > 0){
+        var fileExtension = getFileExtension(fileInput.files[0].name);
+    }
+    
+    if(fileInput.files != null && fileInput.files.length > 0 && fileExtension == "jpg"){
+        fileInput.nextElementSibling.classList.add("hide");
+    } 
+    else{
+        fileInput.nextElementSibling.classList.remove("hide");
+    }
+}
+
+function categoryInputValidate(){
+    let categorySelectValue = document.querySelector(".category-select").value;
+    if(categorySelectValue == 0){
+        document.querySelector(".category-select").parentElement.previousElementSibling.classList.remove("hide");
+    }
+    else{
+        document.querySelector(".category-select").parentElement.previousElementSibling.classList.add("hide");
+    }
+}
+
+function formValidate(){
+    emailValidate();
+    nameOfRecipeValidate();
+    descriptionValidate();
+    cookTimeValidate();
+    prepTimeValidate();
+    numOfServingsValidate();
+    fileValidate();
+    categoryInputValidate();
+    checkIngredientsOrInstructions("#ing1", "#ing2", "#ing3");
+    checkIngredientsOrInstructions("#ins1", "#ins2", "#ins3");
 }
 
 function search(){
