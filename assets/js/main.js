@@ -297,7 +297,6 @@ function checkRegEx(elementId, regEx){
         element.classList.add("border-success");
     }
 }
-
 function writeCardList(array){
     let html = ``;
     array = categoryFilter(array);
