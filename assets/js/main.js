@@ -103,10 +103,25 @@ window.onload = function(){
                 });
 
                 document.querySelector("#my-favourites").addEventListener("click", function(){
-                    writeCardList(favourites);
-                    document.querySelectorAll(".fa-heart").forEach(heartIcon => {
+                    if(favourites.length){
+                        writeCardList(favourites);
+                        document.querySelectorAll(".fa-heart").forEach(heartIcon => {
                         heartIcon.classList.replace("fa-regular", "fa-solid");
                     })
+                    }
+                    else {
+                        document.querySelector("#recipe-list").innerHTML = `
+                        <div class="d-flex flex-column align-items-center">
+                            <h5 class="text-center">You currently have no favourite recipes.</h6>
+                            <button class="btn btn-success btn-lg" id="return-button">Return to the recipe list to pick a favourite!</button>
+                        </div>
+                        `
+                        document.querySelector("#return-button").addEventListener("click", function(e){
+                            e.preventDefault();
+                            writeCardList(result);
+                        })
+                    }
+                    
                 })
                 
             })
@@ -428,7 +443,7 @@ function createRadio(name, idArray, labelArray){
 
 function createDDL(selectClass, divId, listName, array){
     let html = ``;
-    html += `<select class="form-select ${selectClass}">
+    html += `<select class="form-select ${selectClass} mb-1">
                 <option value="0">Choose a ${listName}</option>`
                 for(let item of array){
                     html += `<option value="${item.name.toLowerCase()}">${item.name}</option>`
@@ -443,15 +458,6 @@ function sortRecipes(array) {
     let select = document.querySelector('#sort-select');
     let sortDateAdded = document.querySelector('#sortDateAdded');
     let sortCookTime = document.querySelector('#sortCookTime');
-
-
-    
-
-                
-
-
-
-
 
     select.addEventListener('change', () => {
         
