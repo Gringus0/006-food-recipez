@@ -4,7 +4,7 @@ var url = document.location.pathname;
 let emailRegEx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 let nameOfRecipeRegEx = /^[a-zA-Z]+(\s[a-zA-Z]+)*$/;
 let cookPrepServRegEx = /^(0|[1-9][0-9]?|1[0-9]{2}|2[0-9]{2}|300)$/;
-// console.log(url);
+console.log("aa");
 window.onload = function(){
     setTimeout(function() {
         var loadingScreen = document.getElementById("loading-screen");
